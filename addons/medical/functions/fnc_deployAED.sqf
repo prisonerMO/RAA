@@ -13,7 +13,7 @@
  *
  * Example:	[player] call RAA_fnc_ACEA_AED_deployitem
 */
-params [["_player", ACE_player], [_patient, objNull]];
+params [["_player", ACE_player], ["_patient", objNull]];
 
 private _helper = ace_player;
 if ("RAA_AED" in items ace_player) exitWith {

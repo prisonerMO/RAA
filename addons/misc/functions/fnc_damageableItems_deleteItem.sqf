@@ -27,9 +27,9 @@ private _beltSlotEnabled = !(isNil "RAA_misc_beltSlot_autoMoveBottlesToBelt");
 // First check if item is on belt
 private _done = false;
 if (_beltSlotEnabled) then {
-	if ([_itemToDelete, _unit] call FUNC(beltSlot_hasItem)) then {
+	if ([_itemToDelete, _unit] call EFUNC(beltSlot,beltSlot_hasItem)) then {
 		// Yeah, item found on belt
-		[_itemToDelete, _unit] call FUNC(beltSlot_deleteFromBelt);
+		[_itemToDelete, _unit] call EFUNC(beltSlot,beltSlot_deleteFromBelt);
 		
 		// Add replacement to belt
 		// NOTE: Since belt does not support half-empty mags (yet) in case of those we will
@@ -52,41 +52,13 @@ if !(_done) then {
 	
 	if (_remainingAmmoCount >= 0) then {
 		[_unit, _itemToDelete, _ammoCountFull] call CBA_fnc_removeMagazine;
-		// Spawn half-empty mag
+		// spawn half-empty mag
 		[_unit, _replacementItem, _remainingAmmoCount] call CBA_fnc_addMagazine;
 		
 	} else {
 		[_unit, _itemToDelete] call CBA_fnc_removeItem;
-		// Spawn items
+		// spawn items
 		[_unit, _replacementItem] call CBA_fnc_addItem;
 	};
 	
 };
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

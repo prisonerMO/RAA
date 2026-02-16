@@ -18,7 +18,7 @@
 	params ["_pos","_object"];
 	
 	// Check that object actually has hiddenTextures available
-	if ((count getObjectTextures _object == 0) || (_object isKindOf "Man")) exitWith {
+	if (getObjectTextures _object isEqualTo [] || (_object isKindOf "Man")) exitWith {
 		["Unsupported object"] call zen_common_fnc_showMessage;
 	};
 	
@@ -131,7 +131,7 @@
 					0,		// Default value
 					2,		// Number of rows
 					2,		// Number of columns
-					getArray (configFile >> "CfgVehicles" >> typeOf _object >> "hiddenSelections")
+					getArray (configOf _object >> "hiddenSelections")
 					
 				],
 				true	// Force default
@@ -167,7 +167,7 @@ QPATHTOF(pics\icon_texture.paa)
 	params ["_pos","_object"];
 	
 	// Check that object actually has hiddenTextures available
-	if ((count getObjectTextures _object == 0) || (_object isKindOf "Man")) exitWith {
+	if (getObjectTextures _object isEqualTo [] || (_object isKindOf "Man")) exitWith {
 		["Unsupported object"] call zen_common_fnc_showMessage;
 	};
 	
@@ -217,7 +217,7 @@ QPATHTOF(pics\icon_texture.paa)
 					0,		// Default value
 					2,		// Number of rows
 					2,		// Number of columns
-					getArray (configFile >> "CfgVehicles" >> typeOf _object >> "hiddenSelections")
+					getArray (configOf _object >> "hiddenSelections")
 					
 				],
 				true	// Force default

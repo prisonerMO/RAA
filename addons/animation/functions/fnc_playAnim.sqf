@@ -63,7 +63,7 @@ if (_unit == player) then {	// In case Zeus is remote controlling someone, updat
 
 // Special exception for taking a leak animation
 if (_animation == "Acts_AidlPercMstpSlowWrflDnon_pissing") exitWith {
-	systemchat "This animation can not be looped";
+	systemChat "This animation can not be looped";
 //	_unit spawn RAA_animation_fnc_pissing;
 	_unit spawn FUNC(pissing);
 	
@@ -333,15 +333,9 @@ if (_loopAnim) then {
 	
 };
 
-
-
-
-
-
 /*
 Notes for loop dev stuff
 getNumber (configfile >> "CfgMovesMaleSdr" >> "States" >> animationState player >> "looped")
 getText (configfile >> "CfgMovesMaleSdr" >> "States" >> animationState player >> "Actions")
 getArray (configfile >> "CfgMovesMaleSdr" >> "States" >> animationState player >> "InterpolateTo")
-
 */

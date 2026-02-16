@@ -33,7 +33,7 @@ private _cfgWeapons = configFile >> "CfgWeapons";
 
 	private _className = _x param [0, ""];
 	private _config = _cfgWeapons >> _className;
-	if (!(_className isEqualTo "") && (getNumber (_config >> "acex_field_rations_thirstQuenched") > 0)) then {
+	if ((_className isNotEqualTo "") && (getNumber (_config >> "acex_field_rations_thirstQuenched") > 0)) then {
 		
 		
 		

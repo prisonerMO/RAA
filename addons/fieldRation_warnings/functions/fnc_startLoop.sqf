@@ -28,7 +28,7 @@ if (RAA_FRW_MasterEnable) then {	// Start loop
 	};
 	
 	private _handle = [{
-		[] call RAA_fnc_mainLoop;
+		[] call FUNC(mainLoop);
 	},	15, []] call CBA_fnc_addPerFrameHandler;
 	player setVariable ["RAA_FRW_PFH_Handle",_handle];
 	

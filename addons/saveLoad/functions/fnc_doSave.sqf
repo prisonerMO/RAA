@@ -67,7 +67,7 @@ if !(_saveVehicles || _saveAmmoCrates) exitWith {
 	[COMPNAME, GVAR(debug), "WARNING", "Server-side saving is disabled!"] call EFUNC(common,debugNew);
 };
 
-private _saveRTP = true;		// Dump savedata to .rtp in addition to profileNameSpace
+private _saveRTP = true;		// Dump savedata to .rtp in addition to profileNamespace
 
 switch (_testMode) do {
 	case (0): {	// Normal saving, no extended debug
@@ -113,7 +113,7 @@ private _entities = entities [_searchFilters, []];
 			_objects pushBackUnique _x;	// We only want one of each object in array, our searches might return same thing several times. Such a waste of resources, right?
 		};
 		
-	} forEach ((_x getvariable "objectarea") nearEntities [_searchFilters]);	// 'objectarea' is where modules save their size		THIS SYNTAX FOR nearEntities COMMAND WILL BE RELEASED IN 1.8 A3 UPDATE.
+	} forEach ((_x getVariable "objectarea") nearEntities [_searchFilters]);	// 'objectarea' is where modules save their size		THIS SYNTAX FOR nearEntities COMMAND WILL BE RELEASED IN 1.8 A3 UPDATE.
 	*/
 	
 	// Find loose items on ground
@@ -169,19 +169,11 @@ private _backpacks = [];	// itemCargo ((everyContainer cursorObject) select 2 se
 	if (_x isKindOf "AllVehicles" || _x isKindOf "ReammoBox_F") then {
 		
 		// Check if saving vehicle ammocount is enabled
-		private _ammo = if (_saveVehicles_ammo) then {
-			false	// TODO FINISH SAVEFULLAMMOCOUNT!!		WIP, TODO: FINISH THIS! (at later stage)
-		} else {
-			false
-		};
+		private _ammo = [false, false] select _saveVehicles_ammo; // TODO FINISH SAVEFULLAMMOCOUNT!! WIP, TODO: FINISH THIS! (at later stage)
 		
 		// Do we want to save full dmg values or just simplified ones?
-		private _damage = if (_saveVehicles_damage) then {
-			// Extended (full) damage values		WIP, TODO: FINISH THIS! (at later stage)
-			damage _x
-		} else {	// Simplified damage level
-			damage _x
-		};
+		private _damage = [damage _x, damage _x] select _saveVehicles_damage; // Extended (full) damage values!! WIP, TODO: FINISH THIS! (at later stage)
+
 		// [className, direction, positionAGLS, fuel, dmg, ammoCount, [textures]]
 		_vehicles pushBack [typeOf _x, direction _x, getPos _x, fuel _x, _damage, _ammo, [[], getObjectTextures _x] select _saveVehicles_textures];
 		INC(_dbg_vehs);
@@ -240,7 +232,7 @@ profileNamespace setVariable [format ["%1_weapons", _key], _weapons];
 profileNamespace setVariable [format ["%1_magazines", _key], _magazines];
 profileNamespace setVariable [format ["%1_items", _key], _items];
 profileNamespace setVariable [format ["%1_backpacks", _key], _backpacks];
-profileNameSpace setVariable [format ["%1_meta", _key], systemTimeUTC];			// Mark when this save was done.
+profileNamespace setVariable [format ["%1_meta", _key], systemTimeUTC];			// Mark when this save was done.
 saveProfileNamespace;	// Optional since namespace is saved when game is closed
 
 

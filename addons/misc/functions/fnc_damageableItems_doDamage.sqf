@@ -34,7 +34,7 @@ private _cfgMagazinesBase = configFile >> "CfgMagazines";
 private _beltSlotEnabled = !(isNil "RAA_misc_beltSlot_autoMoveBottlesToBelt");
 private _beltItems = [];
 if (_beltSlotEnabled) then {
-	_beltItems = [_unit] call RAA_misc_fnc_beltSlot_getItems;
+	_beltItems = [_unit] call EFUNC(beltSlot,beltSlot_getItems);
 };
 
 {
@@ -213,17 +213,3 @@ private _itemType = "";
 
 
 //if (_winnerItem )
-
-
-
-
-
-
-
-
-
-
-
-
-
-

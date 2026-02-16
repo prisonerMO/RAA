@@ -130,9 +130,10 @@ if (_timeLeft > 10) then {
 	
 	
 	[	{
-			[_this select 0, _this select 1, false, _safestart] call FUNC(effect_drunk);
+			params ["_unit", "_timeLeft", "_safestart"];
+			[_unit, _timeLeft, false, _safestart] call FUNC(effect_drunk);
 		}, [
-			_unit, _timeLeft
+			_unit, _timeLeft, _safestart
 		], 
 		_timeToNextEffect	// Delay
 	] call CBA_fnc_waitAndExecute;

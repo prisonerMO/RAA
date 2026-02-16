@@ -168,11 +168,11 @@ for "_i" from 4 to 0 step -1 do {
 		_gunsArray deleteAt _i;	// Delete nil value
 		
 		// Now RAA array is out of order so we need to update it as well
-		if (RAA_firesA_debug) then {systemChat format ["[RAA_firesA] Deleted %1 at %2", _x, _i];};
+		if (RAA_firesA_debug) then {systemChat format ["[RAA_firesA] Deleted %1 at %2", _gunsArrayRAA select _i, _i];};
 		
 		// This error message should never fire. Just in case, likely will be deleted at later date
 		if (_gunsArrayRAA param [_i, 0] != 0) then {
-			private _message = format ["[ERROR] [RAA_firesA] Deleted occupied slot %2 from gunsArrayRAA! Content: %1", _gunsArrayRAA select _i, _index];
+			private _message = format ["[ERROR] [RAA_firesA] Deleted occupied slot %2 from gunsArrayRAA! Content: %1", _gunsArrayRAA select _i, _i];
 			systemChat _message;
 			diag_log _message;
 		};

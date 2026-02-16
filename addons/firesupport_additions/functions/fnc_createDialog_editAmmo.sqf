@@ -109,7 +109,7 @@ for "_i" from 0 to 4 do {
 	//	private _classname = (_ammoModules select _o) getVariable ["Ammo", 0];
 		private _ammoModule = _ammoModules param [_o, objNull];
 		
-		private _ammoModulesArray_forThisGun_andAmmo = _ammoModulesArray_forThisGun param [_o, [objNull, 0]];		// [AmmoModuleRef, ammoSlotID]
+	//	private _ammoModulesArray_forThisGun_andAmmo = _ammoModulesArray_forThisGun param [_o, [objNull, 0]];		// [AmmoModuleRef, ammoSlotID] <-- NOT USED?
 	//	private _defaultIndex0 = _ammoModulesArray_forThisGun_andAmmo param [1, 0];	// Should return number (ammoType ID)
 		private _defaultIndex0 = _ammoModule getVariable ["RAA_ammoID", -1];	// Should return number (ammoType ID)
 		_defaultIndex0 = _defaultIndex0 + 1;

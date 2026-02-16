@@ -577,7 +577,7 @@ class GVAR(module_load_defineCrate): GVAR(module_base) {
 
 //========================== Vehicle spawn pos for load =============================
 class GVAR(module_load_vehSpawnPos): GVAR(module_base) {
-	displayName = "Load: Vehicle Spawn Position";
+	displayName = "Load: Vehicle spawn Position";
 	scope = 2;
 	canSetArea = 0;
 	icon = "iconModule";

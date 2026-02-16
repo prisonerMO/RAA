@@ -10,9 +10,9 @@ class CfgVehicles {
 				
 				class RAA_camoFace_paint {
 					displayName = "Apply face camouflage paint";
-					condition = QUOTE(ARR_1(_player) call FUNC(facepaint_canApply));
+					condition = QUOTE([ARR_1(_player)] call FUNC(facepaint_canApply));
 				//    exceptions[] = {};
-					statement = QUOTE(ARR_3(_player, 'ace_field_rations_drinkFromSourceHigh', 1) call ace_common_fnc_doAnimation; ARR_5(11, ARR_1(_player), {_this select 0 call RAA_misc_fnc_facepaint}, {}, 'Applying Face Paint') call ace_common_fnc_progressBar);
+					statement = QUOTE([ARR_3(_player,'ace_field_rations_drinkFromSourceHigh',1)] call ace_common_fnc_doAnimation; [ARR_5(11,ARR_1(_player),{_this select 0 call RAA_misc_fnc_facepaint},{},'Applying Face Paint')] call ace_common_fnc_progressBar);
 				//	icon = QPATHTOF(pics\facepaint_icon);
 					icon = QPATHTOF(pics\facepaint_icon.paa);
 				};
@@ -20,7 +20,7 @@ class CfgVehicles {
 					displayName = "Wash away face camouflage paint";
 					condition = "(face _player) isEqualTo (_player getVariable ['RAA_misc_facepaint_faces', []] param [1, ''])";
 				//    exceptions[] = {};
-					statement = QUOTE(ARR_3(_player, 'ace_field_rations_drinkFromSourceHigh', 1) call ace_common_fnc_doAnimation; ARR_5(11, ARR_1(_player), {_this select 0 call RAA_misc_fnc_facepaint}, {}, 'Washing off Face Paint') call ace_common_fnc_progressBar);
+					statement = QUOTE([ARR_3(_player,'ace_field_rations_drinkFromSourceHigh',1)] call ace_common_fnc_doAnimation; [ARR_5(11,ARR_1(_player),{_this select 0 call RAA_misc_fnc_facepaint},{},'Washing off Face Paint')] call ace_common_fnc_progressBar);
 					icon = QPATHTOF(pics\facepaint_icon.paa);
 				};
 				
@@ -28,20 +28,20 @@ class CfgVehicles {
 				class RAA_chopDownTree {
 					displayName = "Chop down a tree";
 				//	condition = "[player, false] call FUNC(canChopDownTree)";
-					condition = QUOTE(ARR_2(player, false) call FUNC(canChopDownTree));
+					condition = QUOTE([ARR_2(player,false)] call FUNC(canChopDownTree));
 				//    exceptions[] = {};
 				//	statement = "[player, false] call FUNC(DoChopDownTree)";
-					statement = QUOTE(ARR_2(player, false) call FUNC(action_chopDownTree));
+					statement = QUOTE([ARR_2(player,false)] call FUNC(action_chopDownTree));
 					icon = QPATHTOF(pics\icon_cutting_tree.paa);
 				};
 				
 				class RAA_delimbTree {
 					displayName = "delimb a tree";
 				//	condition = "[player, true] call FUNC(canChopDownTree)";
-					condition = QUOTE(ARR_2(player, true) call FUNC(canChopDownTree));
+					condition = QUOTE([ARR_2(player,true)] call FUNC(canChopDownTree));
 				//    exceptions[] = {};
 				//	statement = "[player, true] call FUNC(DoChopDownTree)";
-					statement = QUOTE(ARR_2(player, true) call FUNC(action_chopDownTree));
+					statement = QUOTE([ARR_2(player,true)] call FUNC(action_chopDownTree));
 					icon = QPATHTOF(pics\icon_cutting_tree.paa);
 				};
 				
@@ -56,27 +56,27 @@ class CfgVehicles {
 					class RAA_whistling_1 {
 						displayName = "Attention";
 						condition = "true";
-						statement = QUOTE(ARR_3(_player, 'RAA_misc_whistling_1', 150) call EFUNC(common,3dSound));
+						statement = QUOTE([ARR_3(_player,'RAA_misc_whistling_1',150)] call EFUNC(common,3dSound));
 					};
 					class RAA_whistling_2 {
 						displayName = "Admire";
 						condition = "true";
-						statement = QUOTE(ARR_3(_player, 'RAA_misc_whistling_2', 150) call EFUNC(common,3dSound));
+						statement = QUOTE([ARR_3(_player,'RAA_misc_whistling_2',150)] call EFUNC(common,3dSound));
 					};
 					class RAA_whistling_3 {
 						displayName = "Bird";
 						condition = "true";
-						statement = QUOTE(ARR_3(_player, selectRandom ARR_2('RAA_misc_whistling_3', 'RAA_misc_whistling_4'), 150) call EFUNC(common,3dSound));
+						statement = QUOTE([ARR_3(_player,selectRandom [ARR_2('RAA_misc_whistling_3','RAA_misc_whistling_4')],150)] call EFUNC(common,3dSound));
 					};
 					class RAA_whistling_4 {
 						displayName = "Short";
 						condition = "true";
-						statement = QUOTE(ARR_3(_player, 'RAA_misc_whistling_5', 150) call EFUNC(common,3dSound));
+						statement = QUOTE([ARR_3(_player,'RAA_misc_whistling_5',150)] call EFUNC(common,3dSound));
 					};
 					class RAA_whistling_5 {
 						displayName = "Long";
 						condition = "true";
-						statement = QUOTE(ARR_3(_player, 'RAA_misc_whistling_6', 150) call EFUNC(common,3dSound));
+						statement = QUOTE([ARR_3(_player,'RAA_misc_whistling_6',150)] call EFUNC(common,3dSound));
 					};
 				};
 			};
@@ -278,4 +278,3 @@ class CfgVehicles {
 	
 	
 };
-

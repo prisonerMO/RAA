@@ -51,7 +51,7 @@ if (_saveLoadouts isEqualTo 0) exitWith {
 	[COMPNAME, GVAR(debug), "WARNING", "Client-side saving is disabled!"] call EFUNC(common,debugNew);
 };
 
-private _saveRTP = true;		// Dump savedata to .rtp in addition to profileNameSpace
+private _saveRTP = true;		// Dump savedata to .rtp in addition to profileNamespace
 private _saveToProfile = true;	// Main saving
 
 // Check if current client has been blacklisted
@@ -83,7 +83,7 @@ switch (_testMode) do {
 // Handle dead or spectating players
 if ((!alive player || player in (call ace_spectator_fnc_players)) && _deleteDeadsLoadout) exitWith {
 	profileNamespace setVariable [format ["%1_client", _key], nil];
-	profileNameSpace setVariable [format ["%1_meta", _key], nil];
+	profileNamespace setVariable [format ["%1_meta", _key], nil];
 	saveProfileNamespace;// Optional since namespace is saved when game is closed
 		
 	systemChat "[RAA_Save] You're dead or spectator, your loadout save was deleted";
@@ -145,7 +145,7 @@ if (_saveData isEqualTo []) exitWith {
 if (_saveToProfile) then {
 	profileNamespace setVariable [format ["%1_client", _key], _saveData];
 	if !(isServer) then {		// This is written by server too, so avoid writing it twice.
-		profileNameSpace setVariable [format ["%1_meta", _key], systemTimeUTC];			// Mark when this save was done.
+		profileNamespace setVariable [format ["%1_meta", _key], systemTimeUTC];			// Mark when this save was done.
 	};
 	saveProfileNamespace;
 };

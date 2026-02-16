@@ -36,7 +36,7 @@ RAA_firesA_group_artyLogics,
 */
 
 // Create logic object that acts as arty unit (virtual)
-private _object = RAA_firesA_group_artyLogics createUnit ["RAA_logic_artyGun", ASLtoAGL _pos, [], 0, "NONE"];
+private _object = RAA_firesA_group_artyLogics createUnit ["RAA_logic_artyGun", ASLToAGL _pos, [], 0, "NONE"];
 
 if (isNull _object) exitWith {
 	systemChat "[RAA_firesA] ERROR: Failed to create gun module!";

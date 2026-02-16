@@ -42,6 +42,7 @@ private _itemsDrug = [
 if (_consumeItem in _itemsDrug ) exitWith {
 	
 	[	{	// Code
+			params ["_unit"];
 			[_unit, 60] call EFUNC(ACEX,effect_drug);
 		}, [	// Params
 			_unit

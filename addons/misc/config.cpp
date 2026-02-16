@@ -11,10 +11,22 @@ class CfgPatches
 		units[] = {	// Classes from cfgVehicles
 			"RAA_unfinished_ied_item",
 			"RAA_facepaint_item",
-			"RAA_sound_axe_01"
+			"RAA_sound_axe_01",
+			"RAA_sound_radio_rock",
+			"RAA_sound_radio_epic",
+			"RAA_sound_radio_chill",
+			"RAA_sound_radio_vdvSong",
+			"RAA_sound_chainsaw_01",
+			"RAA_Flag_Motti"
 		};
 		weapons[] = {	// Classes from cfgWeapons
-			"RAA_facepaint"
+			"RAA_facepaint",
+			"RAA_can_broken",
+			"RAA_canteen_broken",
+			"RAA_waterBottle_broken",
+			"RAA_axe",
+			"RAA_chainsaw",
+			"RAA_unfinished_ied"
 		};
 
 		requiredAddons[] = {
@@ -37,8 +49,3 @@ class CfgPatches
 #include "cfgSounds.hpp"
 #include "cfgVehicles.hpp"
 #include "cfgWeapons.hpp"
-
-
-
-
-

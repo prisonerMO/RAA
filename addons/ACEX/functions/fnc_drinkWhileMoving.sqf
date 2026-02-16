@@ -56,13 +56,8 @@ private _displayName = getText (_config >> "displayName");
 private _consumeText = getText (_config >> "acex_field_rations_consumeText");
 
 if (_consumeText == "") then {
-    _consumeText = if (_hungerSatiated > 0) then {
-        "Eating %1...";
-    } else {
-        "Drinking %1...";
-    };
+    _consumeText = ["Drinking %1...", "Eating %1..."] select (_hungerSatiated > 0);
 };
-
 // Format displayName onto consume text
 // Allows for common strings to be used for multiple items
 _consumeText = format [_consumeText, _displayName];
@@ -90,7 +85,7 @@ private _soundPlayed = if (_consumeAnim != "" && {vehicle _player == _player && 
     true
 };*/
 private _firemodeIndex = [player] call FUNC(getFiremodeIndex);
-GVAR(soundPlayed) = if (_firemodeIndex isNotEqualTo -1 && {vehicle _player == _player && {!(_player call ace_common_fnc_isSwimming)}}) then {
+GVAR(soundPlayed) = if (_firemodeIndex isNotEqualTo -1 && {isNull objectParent _player && {!(_player call ace_common_fnc_isSwimming)}}) then {
 	player action ["SwitchWeapon", player, player, -1];
 	GVAR(timeStarted) = time;
 	_consumeTime = _consumeTime + 2;	// It takes a little bit longer

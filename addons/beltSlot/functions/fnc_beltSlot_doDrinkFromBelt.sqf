@@ -71,7 +71,7 @@ if (isNull objectParent _player) then {_stanceIndex = 0};
 private _consumeAnim = getArray (_config >> "acex_field_rations_consumeAnims") param [_stanceIndex, "", [""]];
 private _consumeSound = getArray (_config >> "acex_field_rations_consumeSounds") param [_stanceIndex, "", [""]];
 
-private _soundPlayed = if (_consumeAnim != "" && {vehicle _player == _player && {!(_player call ace_common_fnc_isSwimming)}}) then {
+private _soundPlayed = if (_consumeAnim != "" && {isNull objectParent _player && {!(_player call ace_common_fnc_isSwimming)}}) then {
     // Store current animation for resetting
     _player setVariable ["ace_field_rations_previousAnim", animationState _player];
     [_player, _consumeAnim, 1] call ace_common_fnc_doAnimation;
@@ -191,4 +191,3 @@ private _fnc_condition = {
     _fnc_condition,
     ["isNotInside"]
 ] call ace_common_fnc_progressBar;
-

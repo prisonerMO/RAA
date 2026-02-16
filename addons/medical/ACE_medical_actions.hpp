@@ -47,7 +47,7 @@ class ace_medical_treatment_actions {
 		callbackFailure = "";
 		callbackProgress = "";
 		//condition = "ACEX_field_rations_enabled";
-		condition = QUOTE(ARR_1(_player) call FUNC(forceFeed_canUse));
+		condition = QUOTE([ARR_1(_player)] call FUNC(forceFeed_canUse));
     };
 	
 	
@@ -161,7 +161,7 @@ class ace_medical_treatment_actions {
 		medicRequired = 1;
 		treatmentTime = 8;
 	//	items[] = {"RAA_defibrillator"};
-		condition = QUOTE(ARR_1(_player) call FUNC(defib_canUse));
+		condition = QUOTE([ARR_1(_player)] call FUNC(defib_canUse));
 		callbackSuccess = "RAA_fnc_ACEA_defib_success";
 		callbackFailure = "";
 		callbackProgress = "";
@@ -175,10 +175,5 @@ class ace_medical_treatment_actions {
 	//	sounds[] = {{QPATHTOF(sounds\effect_defib_charging.ogg),1,1,50}};
 		sounds[] = {{QPATHTO_R(sounds\effect_defib_charging.ogg),1,1,50}};
 		litter[] = {};
-	};
-	
-	
-	
-	
-	
+	};	
 };

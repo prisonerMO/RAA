@@ -24,8 +24,8 @@ if (typeName _module isEqualTo "STRING") exitWith {
 	// Manually defined key. We instantly delete everything with this key.
 	private _key = format ["RAA_saveLoad_%1", _module];
 	{
-		profileNameSpace setVariable [format ["%1_%2", _key, _x], nil];
-		profileNameSpace setVariable [format ["%1_sp_%2", _key, _x], nil];
+		profileNamespace setVariable [format ["%1_%2", _key, _x], nil];
+		profileNamespace setVariable [format ["%1_sp_%2", _key, _x], nil];
 	} forEach ["vehicles", "weapons", "magazines", "items", "backpacks", "meta", "client"];
 	
 	saveProfileNamespace;

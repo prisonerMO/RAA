@@ -69,7 +69,7 @@ private _inventory = [];		// Weapons
 _inventory append _weapons;
 _inventory pushBack "  ";		// Mags
 _inventory append _magazines;
-if (count _mines > 0) then {	// Mines/ explosives
+if (_mines isNotEqualTo []) then {	// Mines/ explosives
 	_inventory pushBack "   ";
 	_inventory append _mines;
 };

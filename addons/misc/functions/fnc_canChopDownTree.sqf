@@ -29,7 +29,7 @@ if !("ACE_EntrenchingTool" in _inventoryItems || "RAA_axe" in _inventoryItems ||
 
 private _trees = nearestTerrainObjects [_player, ["Tree"], 5, true, true];
 private _exitResult = false;
-if (count _trees > 0) then {
+if (_trees isNotEqualTo []) then {
 	// Seperate chopping and delimbing actions
 	if (_isDelimbing) then {
 		if (damage (_trees param [0, objNull]) > 0.9) then {

@@ -11,7 +11,7 @@ class cfgWeapons
 		displayName = "Can (Beer)";
 		descriptionShort = "A nice, (not-so) cold can of beer";
     	model = QPATHTOF(data\can_beer2.p3d);
-		picture = QPATHTOF(pics\can_beer_2);
+		picture = QPATHTOF(pics\can_beer_2.paa);
 		acex_field_rations_thirstQuenched = 5;
     };
 
@@ -19,7 +19,7 @@ class cfgWeapons
 		displayName = "Can (Beer 0,0 %)";
 		descriptionShort = "A nice, (not-so) cold can of beer. This one is without alcohol!";
     	model = QPATHTOF(data\can_beer1.p3d);
-		picture = QPATHTOF(pics\can_beer_1);
+		picture = QPATHTOF(pics\can_beer_1.paa);
 		acex_field_rations_thirstQuenched = 5;
     };
 
@@ -29,7 +29,7 @@ class cfgWeapons
 		displayName = "Can (Energy Drink)";
 		descriptionShort = "Get some energy from EuroShooter!";
     //	model = "\a3\structures_f\items\food\can_v2_f.p3d";
-		picture = QPATHTOF(pics\can_ES);
+		picture = QPATHTOF(pics\can_ES.paa);
 	//	acex_field_rations_thirstQuenched = 0;
     };
 
@@ -40,7 +40,7 @@ class cfgWeapons
         author = "riksuFIN";
         displayName = "Moomin Soda Bottle";
         descriptionShort = "Refreshing bottle of soda pop";
-		picture = QPATHTOF(pics\soda_bottle_moomin);
+		picture = QPATHTOF(pics\soda_bottle_moomin.paa);
 		acex_field_rations_replacementItem = "RAA_sodaBottle_half";
 		acex_field_rations_consumeTime = 10;
 		acex_field_rations_thirstQuenched = 9;
@@ -51,7 +51,7 @@ class cfgWeapons
 		scopeArsenal = PRIVATE;
 		displayName = "Moomin Soda Bottle (diluted)";
 		descriptionShort = "Tasty Moomin Soda. Mixed with water. Yuck!";
-		picture = QPATHTOF(pics\soda_bottle_moomin);
+		picture = QPATHTOF(pics\soda_bottle_moomin.paa);
 		acex_field_rations_replacementItem = "RAA_sodaBottle_mixed_half";
 		acex_field_rations_consumeTime = 10;
 		acex_field_rations_thirstQuenched = 6;
@@ -62,7 +62,7 @@ class cfgWeapons
 		scopeArsenal = PRIVATE;
 		displayName = "Moomin Soda Bottle (diluted) (Half)";
 		descriptionShort = "Tasty Moomin Soda. Mixed with water. Yuck!<br/><br/>Thankfully half of it is already gone";
-		picture = QPATHTOF(pics\soda_bottle_moomin_half);
+		picture = QPATHTOF(pics\soda_bottle_moomin_half.paa);
 		acex_field_rations_replacementItem = "RAA_sodaBottle_empty";
         acex_field_rations_refillItem = "RAA_sodaBottle_mixed";
         acex_field_rations_refillAmount = 0.5;
@@ -76,7 +76,7 @@ class cfgWeapons
     class RAA_sodaBottle_half: RAA_sodaBottle {	// Half bottle of Moomin soda
         displayName = "Moomin Soda Bottle (Half)";
         descriptionShort = "Refreshing bottle of soda pop. It's still half full! Or is it half empty?";
-		picture = QPATHTOF(pics\soda_bottle_moomin_half);
+		picture = QPATHTOF(pics\soda_bottle_moomin_half.paa);
 		acex_field_rations_replacementItem = "RAA_sodaBottle_empty";
         acex_field_rations_refillItem = "RAA_sodaBottle_mixed";
         acex_field_rations_refillAmount = 0.5;
@@ -91,7 +91,7 @@ class cfgWeapons
     class RAA_sodaBottle_empty: RAA_sodaBottle {	// Empty moomin soda
         displayName = "Moomin Soda Bottle (Empty)";
         descriptionShort = "Refreshing bottle of soda pop. Too bad someone already drank it all.";
-		picture = QPATHTOF(pics\soda_bottle_moomin_empty);
+		picture = QPATHTOF(pics\soda_bottle_moomin_empty.paa);
 
         acex_field_rations_thirstQuenched = 0;
         acex_field_rations_replacementItem = "";
@@ -109,7 +109,7 @@ class cfgWeapons
 		displayName = "Whiskey Bottle";
 		descriptionShort = "Quality, Barrel-aged whiskey you 'found' from somewhere.";
 		model = QPATHTOF(data\bottle_whiskey.p3d);
-		picture = QPATHTOF(pics\bottle_whiskey);
+		picture = QPATHTOF(pics\bottle_whiskey.paa);
 
 		acex_field_rations_thirstQuenched = 3;
 		acex_field_rations_replacementItem = "RAA_bottle_whiskey_75";
@@ -125,7 +125,7 @@ class cfgWeapons
 		displayName = "Whiskey Bottle (3/4)";
 		descriptionShort = "Quality, Barrel-aged whiskey you 'found' from somewhere.";
 	//	model = "\a3\structures_f\items\food\can_v2_f.p3d";
-		picture = QPATHTOF(pics\bottle_whiskey);
+		picture = QPATHTOF(pics\bottle_whiskey.paa);
 		
 		acex_field_rations_replacementItem = "RAA_bottle_whiskey_50";
 		class ItemInfo: CBA_MiscItem_ItemInfo {
@@ -137,7 +137,7 @@ class cfgWeapons
 		displayName = "Whiskey Bottle (1/2)";
 		descriptionShort = "Quality, Barrel-aged whiskey you 'found' from somewhere.";
 	//	model = "\a3\structures_f\items\food\can_v2_f.p3d";
-		picture = QPATHTOF(pics\bottle_whiskey);
+		picture = QPATHTOF(pics\bottle_whiskey.paa);
 
 		acex_field_rations_replacementItem = "RAA_bottle_whiskey_25";
 	//	acex_field_rations_refillItem = "ACE_WaterBottle";
@@ -150,7 +150,7 @@ class cfgWeapons
 		displayName = "Whiskey Bottle (1/4)";
 		descriptionShort = "Quality, Barrel-aged whiskey you 'found' from somewhere.";
 	//	model = "\a3\structures_f\items\food\can_v2_f.p3d";
-		picture = QPATHTOF(pics\bottle_whiskey);
+		picture = QPATHTOF(pics\bottle_whiskey.paa);
 
 		acex_field_rations_replacementItem = "RAA_bottle_whiskey_empty";
 		class ItemInfo: CBA_MiscItem_ItemInfo {
@@ -163,7 +163,7 @@ class cfgWeapons
 		displayName = "Whiskey Bottle (Empty)";
 		descriptionShort = "Quality, Barrel-aged whiskey you 'found' from somewhere. Too bad it was already empty. Right?";
 	//	model = "\a3\structures_f\items\food\can_v2_f.p3d";
-		picture = QPATHTOF(pics\bottle_whiskey);
+		picture = QPATHTOF(pics\bottle_whiskey.paa);
 
 		acex_field_rations_thirstQuenched = 0;
 		acex_field_rations_replacementItem = "";	// Cannot be drunk
@@ -183,7 +183,7 @@ class cfgWeapons
 		displayName = "Alcohol Bottle";
 		descriptionShort = "Unlabeled, brown glass bottle.<br/>You wonder what's inside";
 		model = QPATHTOF(data\BrownBottle.p3d);
-		picture = QPATHTOF(pics\brown_bottle_ca);
+		picture = QPATHTOF(pics\brown_bottle_ca.paa);
 		acex_field_rations_thirstQuenched = 4;
 		acex_field_rations_replacementItem = "RAA_bottle_genericAlcohol_23";
 		acex_field_rations_refillItem = "";		// Cannot be refilled
@@ -295,7 +295,7 @@ class cfgWeapons
 		displayName = "Thermos Can (Empty)";
 		descriptionShort = "Empty thermos can. Fill with any liquid you want to preserve temperature of.";
 		model = QPATHTOF(data\thermos_1.p3d);
-		picture = QPATHTOF(data\thermos_preview_co);
+		picture = QPATHTOF(data\thermos_preview_co.paa);
 
 		acex_field_rations_thirstQuenched = 0;
 		acex_field_rations_replacementItem = "";
@@ -402,7 +402,7 @@ class cfgWeapons
         displayName = "Tin Can (Del Montre)";
         descriptionShort = "canned pineapple.";
 		model = "\A3\Structures_F_EPA\Items\Food\BakedBeans_F.p3d";
-		picture = QPATHTOF(pics\TinCan_DelMontre);
+		picture = QPATHTOF(pics\TinCan_DelMontre.paa);
         class ItemInfo: CBA_MiscItem_ItemInfo {
             mass = 5.07;
         };
@@ -416,7 +416,7 @@ class cfgWeapons
         displayName = "Tin Can (Pea Soup)";
         descriptionShort = "Is it thursday yet?";
 		model = "\A3\Structures_F_EPA\Items\Food\BakedBeans_F.p3d";
-		picture = QPATHTOF(pics\tinCan_PeaSoup);
+		picture = QPATHTOF(pics\tinCan_PeaSoup.paa);
         class ItemInfo: CBA_MiscItem_ItemInfo {
             mass = 9.59;
         };
@@ -424,12 +424,6 @@ class cfgWeapons
        acex_field_rations_hungerSatiated = 20;
      //   GVAR(consumeText) = CSTRING(EatingX);
     };
-
-
-
-
-
-
 
 #ifdef NOT_WORKSHOP
 	// ------------ DRUGS
@@ -521,19 +515,6 @@ class cfgWeapons
 		scopeArsenal = PROTECTED;
 		acex_field_rations_replacementItem = "";
 	};
-	
 #endif
-
-
-
-
-
-
-
-
-
-
-
-
 
 };

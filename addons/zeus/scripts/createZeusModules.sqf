@@ -526,7 +526,7 @@ QPATHTOF(pics\icon_instadeath.paa)
 ["Fire Support", "Rapid Fire MLRS/ Artillery", {
 	params ["_pos","_object"];
 	
-	if (count (getArtilleryAmmo [_object]) > 0) then {
+	if (getArtilleryAmmo [_object] isNotEqualTo []) then {
 		
 		[_object] call FUNC(createDialog_doArtilleryFire);
 		
@@ -1025,6 +1025,3 @@ QPATHTOF(pics\icon_cargo.paa)
 	QPATHTOF(pics\icon_encryption_key.paa)
 ] call zen_custom_modules_fnc_register;
 */
-
-
-
