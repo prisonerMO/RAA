@@ -40,24 +40,16 @@ lbClear _ctrlWeaps;
 //	lbAdd [_ctrl, _x];
 	
 //	_ctrlItems lbAdd format ["%1", _x];
-	lbAdd [_ctrlItems, _x];
-	lbAdd [IDC_GUI_LOADOUTOVERVIEW_LIST_WEAPONS, _x];
+	// lbAdd [_ctrlItems, _x];
+	// lbAdd [IDC_GUI_LOADOUTOVERVIEW_LIST_WEAPONS, _x];
+    _ctrlItems lbAdd _x;
+	_ctrlWeaps lbAdd _x;
 	
 	if (RAA_misc_debug) then {systemChat format ["[RAA_misc] Added %1", _x];};
 	
 	
 	
 } forEach (items player);
-
-
-
-
-
-
-
-
-
-
 
 /*
 Copy-pasted from ACE Cargo

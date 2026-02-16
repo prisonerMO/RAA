@@ -14,7 +14,7 @@
 */
 
 
-[] Spawn {
+[] spawn {
 	disableSerialization;
 	
 	waitUntil { !isNull findDisplay 602 };
@@ -43,8 +43,8 @@
 	} else {
 		{
 		private _ctrl = _display displayCtrl _x;
-		_ctrl ctrlshow false;
-		_ctrl ctrlcommit 0;
+		_ctrl ctrlShow false;
+		_ctrl ctrlCommit 0;
 		} forEach [IDC_RAA_BELTSLOT_SLOT1, IDC_RAA_BELTSLOT_SLOT2, IDC_RAA_BELTSLOT_BACKGROUND1, IDC_RAA_BELTSLOT_BACKGROUND2];
 		
 	};

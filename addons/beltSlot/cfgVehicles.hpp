@@ -28,7 +28,7 @@ class CfgVehicles {
 					//    exceptions[] = {};
 						statement = QUOTE(0 call FUNC(beltSlot_doMoveFrombelt));
 						icon = "";
-						modifierFunction = QUOTE(ARR_2(_this, 0) call FUNC(beltSlot_actionModifier));
+						modifierFunction = QUOTE([ARR_2(_this,0)] call FUNC(beltSlot_actionModifier));
 					
 						class RAA_beltSlot_moveFromBelt1 {
 							displayName = "Move to inventory";
@@ -42,7 +42,7 @@ class CfgVehicles {
 							displayName = "Drop to ground";
 							condition = QUOTE(true);
 						//    exceptions[] = {};
-							statement = QUOTE(ARR_3(0, ACE_player, 9) call FUNC(beltSlot_doMoveFrombelt));
+							statement = QUOTE([ARR_3(0,ACE_player,9)] call FUNC(beltSlot_doMoveFrombelt));
 							icon = "";
 						};
 					};
@@ -61,7 +61,7 @@ class CfgVehicles {
 					//    exceptions[] = {};
 						statement = QUOTE(1 call FUNC(beltSlot_doMoveFrombelt));
 						icon = "";
-						modifierFunction = QUOTE(ARR_2(_this, 0) call FUNC(beltSlot_actionModifier));
+						modifierFunction = QUOTE([ARR_2(_this,0)] call FUNC(beltSlot_actionModifier));
 					
 
 						class RAA_beltSlot_moveFromBelt2 {
@@ -70,14 +70,14 @@ class CfgVehicles {
 							exceptions[] = {};
 							statement = QUOTE(1 call FUNC(beltSlot_doMoveFrombelt));
 							icon = "";
-							modifierFunction = QUOTE(ARR_2(_this, 1) call FUNC(beltSlot_actionModifier));
+							modifierFunction = QUOTE([ARR_2(_this,1)] call FUNC(beltSlot_actionModifier));
 						};
 
 						class RAA_beltSlot_dropToGround2 {
 							displayName = "Drop to ground";
 							condition = QUOTE(true);
 						//    exceptions[] = {};
-							statement = QUOTE(ARR_3(1, ACE_player, 9) call FUNC(beltSlot_doMoveFrombelt));
+							statement = QUOTE([ARR_3(1,ACE_player,9)] call FUNC(beltSlot_doMoveFrombelt));
 							icon = "";
 						};
 					};
@@ -111,15 +111,5 @@ class CfgVehicles {
 			};
 		};
 	};
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-};
 
+};

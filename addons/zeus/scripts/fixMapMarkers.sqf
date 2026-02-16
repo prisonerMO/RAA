@@ -29,7 +29,7 @@ if !(hasInterface) exitWith {};
 		
 		[	{
 			params ["_marker"];
-			_marker setMarkerDir (MarkerDir _marker);
+			_marker setMarkerDir (markerDir _marker);
 			if (GVAR(debug)) then {systemChat "[RAA_zeus] Synced marker to other clients";};
 			}, [
 				_marker
@@ -45,7 +45,7 @@ if !(hasInterface) exitWith {};
 		
 		[	{
 			params ["_marker"];
-			_marker setMarkerDir (MarkerDir _marker);
+			_marker setMarkerDir (markerDir _marker);
 			if (GVAR(debug)) then {systemChat "[RAA_zeus] Synced marker to other clients";};
 			}, [
 				_marker

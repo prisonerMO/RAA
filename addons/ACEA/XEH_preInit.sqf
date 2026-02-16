@@ -44,9 +44,9 @@ ADDON = true;
 	} else {
 		// User has disabled menu in CBA settings
 		{
-			private _ctrl = _display displayctrl _x;	// Overview control
-			_ctrl ctrlshow false;
-			_ctrl ctrlcommit 0.15;
+			private _ctrl = _display displayCtrl _x;	// Overview control
+			_ctrl ctrlShow false;
+			_ctrl ctrlCommit 0.15;
 		} forEach [5687, 1099];
 	};
 	
@@ -59,9 +59,9 @@ ADDON = true;
 		}] call CBA_fnc_addEventHandler;
 	} else {
 		// Use has disabled Arsenal Description on CBA settings
-		private _ctrl = _display displayctrl 5097;	// Overview control
-		_ctrl ctrlshow false;
-		_ctrl ctrlcommit 0.15;
+		private _ctrl = _display displayCtrl 5097;	// Overview control
+		_ctrl ctrlShow false;
+		_ctrl ctrlCommit 0.15;
 	};
 	
 	
@@ -91,9 +91,9 @@ ADDON = true;
 		private _showToggle = !ctrlShown (_display displayCtrl 5687);
 		private _ctrl = controlNull;
 		{
-			_ctrl = _display displayctrl _x;	// Overview control
-			_ctrl ctrlshow _showToggle;
-			_ctrl ctrlcommit 0.15;
+			_ctrl = _display displayCtrl _x;	// Overview control
+			_ctrl ctrlShow _showToggle;
+			_ctrl ctrlCommit 0.15;
 		} forEach [5687, 1099, 5097];
 	};
 	

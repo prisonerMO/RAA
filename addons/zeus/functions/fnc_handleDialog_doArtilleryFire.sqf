@@ -1,115 +1,118 @@
 #include "script_component.hpp"
-/* File: fnc_handleDialog_doArtilleryFire.sqf
+/* File: fnc_createDialog_doArtilleryFire.sqf
  * Author(s): riksuFIN
- * Description: Lets Zeus select location for artillery strike and then calls it
+ * Description: Create dialog for selecting settings of firing MLRS/ arty
  *
- * Called from: createDialog_doArtilleryFire (Zeus module)
- * Local to:	Client (Zeus)
+ * Called from: Zeus module
+ * Local to:	
  * Parameter(s):
- * 0:	Params from dialog
- * 1:	Object
+ * 0:	Object
+ * 1:	
  * 2:	
  * 3:	
  * 4:	
  *
- Returns: Nothing
+ Returns: 
  *
  * Example:	
  *	[] call fileName
 */
 
-#define COLOR_IN_RANGE [0, 0.9, 0, 1]
-#define COLOR_OUT_OF_RANGE [0.9, 0, 0, 1]
-
-
-params ["_paramsDialog", "_object"];
-_paramsDialog params ["_magazine", "_numberOfRounds", "_refillAmmo", "_startDelay"];
-
-if (RAA_zeus_debug) then {
-	systemChat format ["[RAA_zeus] %1", _this];
-	RAA_debug = _this;
-};
+params [["_object", objNull]];
 
 
 
 
+//private _config = getText (configFile >> "CfgAmmo" >> _object);
 
-
-if (_refillAmmo) then {
-	_object setVehicleAmmo 1;
-};
-
-
-private _modifierFunction = {
-	params ["_vehicle", "_position", "_params", "_visuals"];
-	_params params ["_magazine"];
+// Prep all avaiable ammo types for this
+private _content = [];
+private _contentPretty = [];
+private _ammoName = "";
+{
 	
-	//if (ASLtoAGL _position inRangeOfArtillery [_vehicles, _magazine]) then {
-	private _eta = _vehicle getArtilleryETA [ASLtoAGL _position, _magazine];
-	if (_eta > 0) then {
-		_visuals set [0, format ["ETA: %1 s", floor _eta]];
-		_visuals set [3, COLOR_IN_RANGE];
-	} else {
-		_visuals set [0, "OUT OF RANGE"];
-		_visuals set [3, COLOR_OUT_OF_RANGE];
-	};
-};
+//	_ammoName = getText (configFile >> "CfgVehicles" >> "Thing" >> "icon");
+	_ammoName = getText (configFile >> "CfgMagazines" >> _x >> "displayName");
+	_content pushBack _x;
+	_contentPretty pushBack _ammoName;
+	
+} forEach (getArtilleryAmmo [_object]);
 
 
 
 
 
-[
-	_object, 
-	{
+["FIRE MLRS/ RAPID ARTILLERY",
+	[ // CONTENT
+		["LIST",
+			["Ammo to be fired",
+				""
+			],[
+				_content,
+				_contentPretty,
+				0,
+				6
+			],
+			false	// Force default
+		],
+		
+		["SLIDER",
+			["Number of rounds to be fired",
+				"Unit will only fire rounds equal to one magazine OR this value, whichever is lower"
+			],[
+				1,
+				40,
+				10,
+				0
+			],
+			false	// Force default
+		],
+		
+		["CHECKBOX",
+			["Refill ammo",
+				"Refill unit's ammmo before fire mission"
+			],[
+				false
+			],
+			false	// Force default
+		],
+		
+		["SLIDER",
+			["Delayed barrage start",
+				""
+			],[
+				0,
+				3600,
+				0,
+				{
+					if (_this isEqualTo 0) then {
+						"INST"
+					} else {
+						[_this, "MM:SS"] call BIS_fnc_secondsToString
+					}
+				}
+			],
+			false	// Force default
+		]
+	
+	], { // ON CONFIRM CODE
+	//	params ["_dialogValues", "_object"];
+		 
 		/*
-		if (RAA_zeus_debug) then {
-			systemChat format ["[RAA_zeus] %1", _this];
-			RAA_debug = _this;
-		};
+		[	{
+				_this call FUNC(handleDialog_doArtilleryFire);
+			}, [
+				_this
+			],
+			_this select 0 select 3
+		] call CBA_fnc_waitAndExecute;
 		*/
-		params ["_successful", "_vehicle", "_position", "_params"];
-		_params params ["_magazine", "_numberOfRounds", "_startDelay"];
-		if (_successful) then {
-			
-			private _eta = _vehicle getArtilleryETA [ASLtoAGL _position, _magazine];
-			
-			if (_eta > 0) then {
-				
-				[	{
-						params ["_vehicle", "_position", "_magazine", "_numberOfRounds"];
-						
-					//	[zen_common_doArtilleryFire, [_vehicle, ASLtoAGL _position, _magazine, _numberOfRounds], _vehicle] call CBA_fnc_targetEvent;
-						_vehicle doArtilleryFire [ASLtoAGL _position, _magazine, _numberOfRounds];
-						if (RAA_zeus_debug) then {systemChat format ["[RAA_zeus] %1 firing %2 rounds of type %3", _vehicle, _numberOfRounds, _magazine];};
-					}, [
-						_vehicle, _position, _magazine, _numberOfRounds
-					],
-					_startDelay
-				] call CBA_fnc_waitAndExecute;
-				
-				
-				
-			} else {
-				["Target out of range!"] call zen_common_fnc_showMessage;
-			};
-		};
-	},
-	[_magazine, _numberOfRounds, _startDelay],
-	"Target location",
-	nil,
-	nil,
-	nil,
-	_modifierFunction
-] call zen_common_fnc_selectPosition
-
-
-
-
-
-
-
-
-
-
-
+		_this call FUNC(handleDialog_doArtilleryFire);
+		
+		
+	},{	// On cancel code
+		
+	},	// Arguments
+		_object
+	
+] call zen_dialog_fnc_create;

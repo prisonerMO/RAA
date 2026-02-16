@@ -48,7 +48,7 @@ class small
 			["COMBO", // Type
 				"User Side", // Name
 				[ // Content-Specific arguments:
-					[BLUFOR,OPFOR,INDEPENDENT,CIVILIAN],
+					[blufor, opfor, independent, civilian],
 					[
 						["Blufor","", "\A3\3den\Data\Displays\Display3DEN\PanelRight\side_west_ca.paa"],
 						["Opfor","", "\A3\3den\Data\Displays\Display3DEN\PanelRight\side_east_ca.paa"],

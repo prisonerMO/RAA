@@ -24,8 +24,8 @@ private _blacklist = [];
 		INC(_debug_objs);
 	} forEach synchronizedObjects _x;
 	
-//	private _entries = call compile (_x getvariable [QGVAR(blacklist), ""]);
-	private _entries = _x getvariable [QGVAR(blacklist), ""];
+//	private _entries = call compile (_x getVariable [QGVAR(blacklist), ""]);
+	private _entries = _x getVariable [QGVAR(blacklist), ""];
 	if (typeName _entries isEqualTo "ARRAY" && {count _entries > 0}) then {
 		{
 			_blacklist pushBackUnique _x;		// Entries written to field inside module by missionMaker

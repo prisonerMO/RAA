@@ -18,8 +18,8 @@
 */
 
 params ["_sound", "_radius"];
-
-
+/*
+Not finished
 
 
 
@@ -28,3 +28,4 @@ private _targets = allPlayers inAreaArray [ASLToAGL getPosASL _unit, _distance, 
 if (_targets isEqualTo []) exitWith {
 	
 };
+*/

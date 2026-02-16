@@ -68,6 +68,7 @@ private _itemsDirtyWater = [
 if (_consumeItem in _itemsDrunk) exitWith {
 	
 	[	{	// Code
+			params ["_unit"];
 			[_unit, 300, true] call FUNC(effect_drunk);
 		}, [	// Params
 			_unit
@@ -81,6 +82,7 @@ if (_consumeItem in _itemsDrunk) exitWith {
 if (_consumeItem in _itemsDrug ) exitWith {
 	
 	[	{	// Code
+			params ["_unit"];
 			[_unit, 60] call FUNC(effect_drug);
 		}, [	// Params
 			_unit
@@ -114,7 +116,3 @@ if (_consumeItem in _itemsDirtyWater ) exitWith {
 	
 	if (RAA_misc_debug) then {systemChat format ["Calling effect for item %1", _consumeItem];};
 };
-
-
-
-

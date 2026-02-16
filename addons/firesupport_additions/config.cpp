@@ -9,6 +9,8 @@ class CfgPatches
 		requiredVersion = REQUIRED_VERSION;
 		VERSION_CONFIG;
 		units[] = {	// Classes from cfgVehicles
+			"RAA_logic_artyAmmo",
+			"RAA_logic_artyGun"
 		};
 		weapons[] = {	// Classes from cfgWeapons
 		};

@@ -75,7 +75,7 @@ class cfgVehicles		// Character classes are defined under cfgVehicles.
 					condition = "'RAA_AED' in items _player";
 				//    exceptions[] = {};
 					statement = "[_player] call RAA_fnc_ACEA_AED_deployitem;";
-					icon = QPATHTOF(pics\icon_aed_action);
+					icon = QPATHTOF(pics\icon_aed_action.paa);
 				};
 				
 				

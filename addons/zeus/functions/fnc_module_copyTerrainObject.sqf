@@ -26,10 +26,10 @@ _pos = ASLToAGL _pos;
 private _object = nearestObjects [_pos, ["Static"], 10];
 
 // Check if we found something
-if (_object isEqualTo []) exitWith {
+if (_object isNotEqualTo []) exitWith {
 	// Nope, nothing found. For sake of feedback try to figure out reason
 	private _objects = nearestTerrainObjects [_pos, [], 10];
-	if (count _objects > 0) then {
+	if (_objects isNotEqualTo []) then {
 		["This object cannot be spawned"] call zen_common_fnc_showMessage;	// = is terrain object without config entry. Most likely vegetation or some walls
 	} else {
 		["Could not find object"] call zen_common_fnc_showMessage;	// = Just plain nothing nearby
@@ -57,5 +57,3 @@ if (RAA_zeus_debug) then {systemChat format ["[RAA_zeus] Found %1 | %2", _classn
 		} forEach allCurators;
 	}
 }, [_classname], format ["Select where to spawn %1", _classname]] call zen_common_fnc_selectPosition
-
-

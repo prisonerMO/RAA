@@ -29,13 +29,15 @@ if (_isGlobal) then {
 			params ["", "", "_variable", "_value"];
 			_variable isEqualTo _value
 		}, {	// Code
-			systemChat format ["[RAA_firesA] Debug: %1 synchronized in %2 seconds", _this select 0, serverTime - _this select 1];
+			params ["_variable", "_timeSent"];
+			systemChat format ["[RAA_firesA] Debug: %1 synchronized in %2 seconds", _variable, serverTime - _timeSent];
 		}, [	// Params
 			_variable, _timeSent, _variable, _value
 		],		// Timeout
 			60,
 		{		// Timeout code
-			systemChat format ["[RAA_firesA] Debug variable sync over network: %1 failed to sync in time", _this select 0];
+			params ["_variable"];
+			systemChat format ["[RAA_firesA] Debug variable sync over network: %1 failed to sync in time", _variable];
 		}
 	] call CBA_fnc_waitUntilAndExecute;
 	
@@ -46,22 +48,16 @@ if (_isGlobal) then {
 			params ["", "", "_variable", "_value", "_object"];
 			(_object getVariable [_variable, ""]) isEqualTo _value
 		}, {	// Code
-			systemChat format ["[RAA_firesA] Debug: %1 synchronized in %2 seconds", _this select 0, serverTime - _this select 1];
+			params ["_variable", "_timeSent"];
+			systemChat format ["[RAA_firesA] Debug: %1 synchronized in %2 seconds", _variable, serverTime - _timeSent];
 		}, [	// Params
 			_variable, _timeSent, _variable, _value, _object
 		],		// Timeout
 			60,
 		{		// Timeout code
-			systemChat format ["[RAA_firesA] Debug variable sync over network: %1 failed to sync in time", _this select 0];
+			params ["_variable"];
+			systemChat format ["[RAA_firesA] Debug variable sync over network: %1 failed to sync in time", _variable];
 		}
 	] call CBA_fnc_waitUntilAndExecute;
-	
-	
+
 };
-
-
-
-
-
-
-

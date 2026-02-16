@@ -15,11 +15,6 @@
 
 params ["_player", "_tree"];
 
-
-
-
-
-
 if (random 100 > 95) then {
 	private _anim = selectRandom [
 		"Acts_Ambient_Gestures_Sneeze",
@@ -29,8 +24,11 @@ if (random 100 > 95) then {
 	[_player, _anim, 2] call ace_common_fnc_doAnimation;
 	
 	[	{
+			params ["_player"];
 			[_player, "", 2] call ace_common_fnc_doAnimation;
-		}, [],
+		}, [
+			_player
+		],
 		4
 	] call CBA_fnc_waitAndExecute;
 	

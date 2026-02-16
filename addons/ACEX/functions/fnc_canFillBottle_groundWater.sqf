@@ -11,7 +11,7 @@
  *
  * Example:	[] call RAA_acex_fnc_canFillBottle_groundWater
 */
-
+params ["_player"];
 private _inventoryItems = [_player] call ace_common_fnc_uniqueItems;
 
 // If player has none of these items exit

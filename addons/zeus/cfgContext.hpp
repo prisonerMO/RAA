@@ -3,8 +3,8 @@ class zen_context_menu_actions {
 	class RAA_disableAIMove {
 		displayName = "Toggle AI Movement";
 		icon = QPATHTOF(pics\disable_move.paa);
-		condition = QUOTE(ARR_1(_objects) call FUNC(canDisableAIMovement));	// MUST return bool.
-		statement = QUOTE(ARR_1(_objects) call FUNC(disableAIMovement));	// Code to execute
+		condition = QUOTE([ARR_1(_objects)] call FUNC(canDisableAIMovement));	// MUST return bool.
+		statement = QUOTE([ARR_1(_objects)] call FUNC(disableAIMovement));	// Code to execute
 		priority = 54;
 	};
 	
@@ -12,15 +12,15 @@ class zen_context_menu_actions {
 		displayName = "Teleport Object";
 		icon = QPATHTOF(pics\arrows.paa);
 		condition = "count _objects > 0";	// MUST return bool.
-		statement = QUOTE(ARR_1(_objects) call FUNC(teleportVehicle));	// Code to execute
+		statement = QUOTE([ARR_1(_objects)] call FUNC(teleportVehicle));	// Code to execute
 		priority = 55;
 	};
 	
 	class RAA_lambs_doSupress {
 		displayName = "Do Supress";
 		icon = QPATHTOF(pics\arrows.paa);
-		condition = QUOTE(ARR_1(_objects) call FUNC(canDisableAIMovement));
-		statement = QUOTE(ARR_1(_objects) call FUNC(doSupress));
+		condition = QUOTE([ARR_1(_objects)] call FUNC(canDisableAIMovement));
+		statement = QUOTE([ARR_1(_objects)] call FUNC(doSupress));
 		priority = 56;
 	};
 	
@@ -33,11 +33,10 @@ class zen_context_menu_actions {
 //	priority = 20;
 	
 //	insertChildren = "[_objects, _hoveredEntity ] call RAA_zeus_fnc_remoteControl_getChildrens";
-	insertChildren = QUOTE(ARR_2(_objects, _hoveredEntity) call FUNC(remoteControl_getChildrens));
+	insertChildren = QUOTE([ARR_2(_objects,_hoveredEntity)] call FUNC(remoteControl_getChildrens));
 	
 	
 	};
 	
 	
 };
-

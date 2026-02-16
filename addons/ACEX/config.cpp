@@ -17,7 +17,8 @@ class CfgPatches
 			"RAA_bottle_whiskey_25_Item",
 			"RAA_bottle_whiskey_empty_Item",
 			"RAA_bottle_genericAlcohol_Item",
-			"RAA_bottle_genericAlcohol_water_Item"
+			"RAA_bottle_genericAlcohol_water_Item",
+			"RAA_Can_Beer_AlcoholFree_Item"
 			
 		};
 		weapons[] = {	// Classes from cfgWeapons
@@ -39,7 +40,14 @@ class CfgPatches
 			"RAA_bottle_genericAlcohol_empty",
 			"RAA_bottle_genericAlcohol_water",
 			"RAA_tinCan_DelMontre",
-			"RAA_tinCan_peaSoup"
+			"RAA_tinCan_peaSoup",
+			"RAA_thermos_coffee_half",
+			"RAA_thermos_coffee",
+			"RAA_thermos_tea_half",
+			"RAA_thermos_tea",
+			"RAA_thermos_water_half",
+			"RAA_thermos_water",
+			"RAA_thermos_empty"
 			
 		};
 

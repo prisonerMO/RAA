@@ -36,12 +36,12 @@ if ((count _objects isEqualTo 0) || (count _objects isEqualTo 1)) exitWith {[]};
 	if ([_x] call zen_remote_control_fnc_canControl && _x isKindOf "CAManBase") then {
 		
 	//	private _name = name _x;
-		private _name = getText (configFile >> "CfgVehicles" >> typeOf _x >> "displayName");
+		private _name = getText (configOf _x >> "displayName");
 		_name = format ["%1 (%2)", _name, name _x];
 		
 		private _icon = "";
 		private _vehicle = vehicle _x;
-		if !(_vehicle isEqualTo _x) then {
+		if (_vehicle isNotEqualTo _x) then {
 			// This unit is inside vehicle, lets check his role in it
 			
 			// TODO: Add code here to detect crew role of this unit and assign icon accordingly
@@ -96,5 +96,3 @@ if ((count _objects isEqualTo 0) || (count _objects isEqualTo 1)) exitWith {[]};
 
 
 _actions
-
-

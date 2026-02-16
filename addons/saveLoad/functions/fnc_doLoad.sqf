@@ -92,7 +92,7 @@ if (_loadVehicles) then {
 	
 	private _vehicles = profileNamespace getVariable [format ["%1_vehicles", _key], []];
 	if (count _vehicles > 0) then {
-		// Spawn all vehicles. Hopefully without much explosions
+		// spawn all vehicles. Hopefully without much explosions
 		{
 			_x params ["_className", "_direction", "_position", "_fuel", "_dmg", "_ammo", "_textures"];
 			
@@ -117,7 +117,7 @@ if (_loadVehicles) then {
 				INC(_debug_vehSpawnedDefaultPos);
 			};
 			
-			// Spawn vehicle
+			// spawn vehicle
 			private _veh = createVehicle [_className, _position, [], 0, "NONE"];
 			
 			// For UAV's spawn AI, otherwise it's useless
@@ -221,7 +221,7 @@ if (_loadGear) then {
 	{
 		if (_x isEqualTo []) then {
 			[COMPNAME, true, "LOG", format ["Spawning box %1", _forEachIndex]] call EFUNC(common,debugNew);
-			// Spawn new boxes
+			// spawn new boxes
 			private _box = objNull;
 			switch (_forEachIndex) do {
 				case (0): {_box = createVehicle ["Box_NATO_Wps_F", _module, [], 10, "NONE"]; _boxWeapons pushBack _box};

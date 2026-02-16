@@ -45,7 +45,7 @@ if (isServer) then {
 	
 	
 	
-	// Spawn water bottles to AI's. 10 seconds delay from spawning to allow everything else do their stuff first
+	// spawn water bottles to AI's. 10 seconds delay from spawning to allow everything else do their stuff first
 //	["CAManBase", "init", {[_this select 0] call FUNC(handleAIInit);}, true, [], true] call CBA_fnc_addClassEventHandler;
 	["CAManBase", "init", {
 		[	{
@@ -58,7 +58,7 @@ if (isServer) then {
 	
 	
 	if (["RAA_isMotti"] call ace_common_fnc_isModLoaded) then {
-		if (RAA_misc_zafw_timeOutReminder_enabled && (count allCurators > 0)) then {
+		if (RAA_misc_zafw_timeOutReminder_enabled && allCurators isNotEqualTo []) then {
 			// Init ZAFW timeout reminders
 			// Only if framework is found and safestart system is enabled
 			[{ (!isNil "zafw_endinprogress") && (!isNil "zafw_safestart_enabled")}, {

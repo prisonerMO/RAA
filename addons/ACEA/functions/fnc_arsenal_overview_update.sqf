@@ -12,7 +12,7 @@
  *
 */
 
-_this Spawn {
+_this spawn {
 	
 	disableSerialization;
 //	waitUntil { !isNull findDisplay 1127001 };
