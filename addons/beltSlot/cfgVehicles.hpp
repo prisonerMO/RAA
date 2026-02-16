@@ -28,7 +28,8 @@ class CfgVehicles {
 					//    exceptions[] = {};
 						statement = QUOTE(0 call FUNC(beltSlot_doMoveFrombelt));
 						icon = "";
-						modifierFunction = QUOTE([ARR_2(_this,0)] call FUNC(beltSlot_actionModifier));
+						modifierFunction = QUOTE([ARR_5(_this select 3,0,_player,""Move %1 to inventory"",true)] call FUNC(beltSlot_actionModifier));
+						//modifierFunction = QUOTE([ARR_2(_this,0)] call FUNC(beltSlot_actionModifier));
 					
 						class RAA_beltSlot_moveFromBelt1 {
 							displayName = "Move to inventory";
@@ -46,14 +47,6 @@ class CfgVehicles {
 							icon = "";
 						};
 					};
-				//	class RAA_beltSlot_moveFromBelt1 {
-				//		displayName = "Move %1 to inventory";
-				//		condition = QUOTE(0 call FUNC(beltSlot_canMoveFrombelt));
-				//	//    exceptions[] = {};
-				//		statement = QUOTE(0 call FUNC(beltSlot_doMoveFrombelt));
-				//		icon = "";
-				//		modifierFunction = "[_this, 0] call FUNC(beltSlot_actionModifier)";
-				//	};
 					
 					class RAA_belSlot_item2 {
 						displayName = "%1";
@@ -61,7 +54,7 @@ class CfgVehicles {
 					//    exceptions[] = {};
 						statement = QUOTE(1 call FUNC(beltSlot_doMoveFrombelt));
 						icon = "";
-						modifierFunction = QUOTE([ARR_2(_this,0)] call FUNC(beltSlot_actionModifier));
+						modifierFunction = QUOTE([ARR_5(_this select 3,1,_player,""Move %1 to inventory"",true)] call FUNC(beltSlot_actionModifier));
 					
 
 						class RAA_beltSlot_moveFromBelt2 {
@@ -70,7 +63,6 @@ class CfgVehicles {
 							exceptions[] = {};
 							statement = QUOTE(1 call FUNC(beltSlot_doMoveFrombelt));
 							icon = "";
-							modifierFunction = QUOTE([ARR_2(_this,1)] call FUNC(beltSlot_actionModifier));
 						};
 
 						class RAA_beltSlot_dropToGround2 {
@@ -110,6 +102,30 @@ class CfgVehicles {
 				};
 			};
 		};
+
+		class ACE_Actions {
+			class RAA_beltSlot_slot1 {
+					displayName = "Grab N/A";
+					condition = QUOTE(GVAR(enabled) && {_target getVariable [ARR_2(QQGVAR(data),[])] param [ARR_2(0,[])] isNotEqualTo []});
+					statement = QUOTE([ARR_3(0,_target,_player)] call FUNC(takeFromBelt));
+					//icon = QPATHTOF();
+					modifierFunction = QUOTE([ARR_5(_this select 3,0,_target,""Grab %1"",true)] call FUNC(beltSlot_actionModifier));
+					position = QUOTE([ARR_3(-0.2,0,-0.05)]);	// TODO find correct placement
+					distance = 2;
+			};
+			class RAA_beltSlot_slot2 {
+					displayName = "Grab N/A";
+					condition = QUOTE(GVAR(enabled) && {_target getVariable [ARR_2(QQGVAR(data),[])] param [ARR_2(1,[])] isNotEqualTo []});
+					statement = QUOTE([ARR_3(1,_target,_player)] call FUNC(takeFromBelt));
+					//icon = QPATHTOF();
+					modifierFunction = QUOTE([ARR_5(_this select 3,1,_target,""Grab %1"",true)] call FUNC(beltSlot_actionModifier));
+					position = QUOTE([ARR_3(0.2,0,-0.05)]);	// TODO find correct placement
+					distance = 2;
+			};
+		};
+
+
+
 	};
 
 };

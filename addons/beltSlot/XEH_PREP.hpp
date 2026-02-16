@@ -17,5 +17,3 @@ PREP(placeExplosive);
 PREP(placeExplosive_getChildren);
 PREP(onRespawn);
 PREP(takeFromBelt);
-
-

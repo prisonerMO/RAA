@@ -5,7 +5,7 @@
  *
  * Local to:	Client who's taking item
  * Parameter(s):
- 0:	BeltSlot's physical object which is being taken
+ 0:	Slot number
  1: Player who's taking this object
  *
  Returns: Nothing
@@ -13,24 +13,27 @@
  * Example:	
  *	[player] call RAA_beltSlot_fnc_takeFromBelt
 */
-params [["_object", objNull], ["_player", ACE_player]];
+params [["_slot", -1], ["_target", objNull], ["_player", ACE_player]];
 
-if (isNull _object || isNull _player) exitWith {};
+if (isNull _player) exitWith {};
 
+private _beltData = _target getVariable [QGVAR(data), []] param [_slot, []];
 
-_object getVariable [QGVAR(beltSlotItem), []] params [["_owner", ACE_player], ["_classname", ""], ["_slot", -1]];
+if (_beltData isEqualTo []) exitWith {
+    [COMPNAME, GVAR(debug), "ERROR", format ["Failed to grab slot %1 item from %2's belt", _slot, _target]] call EFUNC(common,debugNew);
+};
 
-private _classname = _object getVariable [QGVAR(classname), ""];
+private _classname = _beltData param [0, ""];
 
-[COMPNAME, GVAR(debug), "INFO", format ["Taking object %1 from %2 by %3 from slot %4", _object, _owner, _player, _slot]] call EFUNC(common,debugNew);
+[COMPNAME, GVAR(debug), "INFO", format ["Taking object %1 from %2 by %3 from slot %4", _classname, _target, _player, _slot]] call EFUNC(common,debugNew);
 
 // Remove this item from its owner's belt. Has to be done on their machine
-[_slot, _owner] remoteExec [QFUNC(beltSlot_deleteFromBelt), _owner];
+[_slot, _target] remoteExec [QFUNC(beltSlot_deleteFromBelt), _target];
 
 // Add visual feedback
 [_player, "PutDown"] call ACE_common_fnc_doGesture;
-[4, 1, 5] remoteExec ["addCamShake", _owner];
-["Someone took something from your belt"] remoteExec ["systemChat", _owner];
+[4, 1, 5] remoteExec ["addCamShake", _target];
+["Someone took something from your belt"] remoteExec ["systemChat", _target];   // TODO: switch systemChat to ACE hint
 
 // Attempt to put it directly to player's own belt
 private _success = ["", _player, _className, true] call RAA_beltSlot_fnc_beltSlot_doMoveToBelt;

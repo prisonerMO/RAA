@@ -250,7 +250,7 @@ if (_kindOf isEqualTo 1 || _kindOf isEqualTo 3) then {
 
 // Save all this trash so we can find it again
 _beltSlots set [_slotToUse, [_classname, _picture, _displayName, _object, _weight, _canDrink]];
-_unit setVariable [QGVAR(data), _beltSlots];
+_unit setVariable [QGVAR(data), _beltSlots, true];
 publicVariableServer QGVAR(data);		// Send belt data to server. This is only used for deleting beltItems on user disconnect
 
 // Add mass of item to player as virtual mass
@@ -261,35 +261,6 @@ publicVariableServer QGVAR(data);		// Send belt data to server. This is only use
 if !(isNull findDisplay 602) then {
 	call FUNC(beltSlot_onInventoryOpened);
 };
-
-
-//  BELT ITEM's SIDE //
-// Save owner of this belt item and make sure it's global
-_object setVariable [QGVAR(beltSlotItem), [_unit, _className, _slotToUse], true];
-
-// Add ACE interaction so other players can grab item from belt.
-/* * Arguments:
- * 0: Action name <STRING>
- * 1: Name of the action shown in the menu <STRING>
- * 2: Icon file path or Array of icon file path and hex color ("" for default icon) <STRING or ARRAY>
- * 3: Statement <CODE>
- * 4: Condition <CODE>
- * 5: Insert children code <CODE> (default: {})
- * 6: Action parameters <ANY> (default: [])
- * 7: Position (Position array, Position code or Selection Name) <ARRAY or CODE or STRING> (default: {[0, 0, 0]})
- * 8: Distance <NUMBER> (default: 2)
- * 9: Other parameters [showDisabled,enableInside,canCollapse,runOnHover,doNotCheckLOS] <ARRAY> (default: all false)
- * 10: Modifier function <CODE> (default: {})
- */
-private _actionGrab = ["RAA_grabBeltItem", "Take Item from Belt", "", {[_target, _player] call FUNC(takeFromBelt)}, {true}, {}, [], [0, 0, 0], 2] call ace_interact_menu_fnc_createAction;
-//_action = ["VulcanPinch", "Vulcan Pinch", "", {_target setDamage 1;}, {true}, {}, [parameters], [0, 0, 0], 100] call ace_interact_menu_fnc_createAction;
-
-
-[_object, 0, ["ACE_Actions"], _actionGrab] remoteExec ["ace_interact_menu_fnc_addActionToObject", [0, -2] select isDedicated, true];
-//[_object, 0, ["ACE_Actions"], VulcanPinchAction] call ace_interact_menu_fnc_addActionToObject;	// Note: This fnc is not global
-
-
-
 
 
 /*

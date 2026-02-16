@@ -1,5 +1,4 @@
 //PREP(empty);
-PREP(onMenuOpen_loadoutOverview);
 PREP(arsenal_overview_update);
 PREP(arsenal_overview_getInventoryItems);
 PREP(arsenal_description);

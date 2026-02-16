@@ -30,4 +30,3 @@ class CfgPatches
 
 #include "CfgEventHandlers.hpp"
 #include "cfgVehicles.hpp"
-#include "cfgWeapons.hpp"

@@ -1,4 +1,3 @@
-
 ================ KNOWN BUGS ===================================
 - BeltItems: Drinking half bottle deletes entire bottle
 - ACE Arsenal Overview & Item Description will not hide with rest of interface
@@ -20,6 +19,9 @@
 - CBA error setting:
 	["text", true, false] call ace_common_fnc_parseList
 	https://github.com/acemod/ACE3/blob/master/addons/common/functions/fnc_parseList.sqf
+
+- Delete fnc_onMenuOpen_loadoutOverview
+
 
 ================ CHANGE NOTES ===================================
 v2.0

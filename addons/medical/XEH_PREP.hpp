@@ -16,7 +16,6 @@ PREP(getConsumeableItem);
 PREP(naloxone_local);
 PREP(naloxone);
 PREP(onMedicalAction);
-PREP(onMenuOpen_loadoutOverview);
 PREP(pickUpAED);
 PREP(propofol_local);
 PREP(propofol);
