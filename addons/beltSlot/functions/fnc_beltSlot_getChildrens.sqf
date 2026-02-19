@@ -62,7 +62,5 @@ private _config = _cfgWeapons;
 	
 } forEach _items;
 
-systemChat format ["RAA_belt_getChild: %1 items: %2", count _actions, count _items];
-
 
 _actions

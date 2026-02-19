@@ -49,8 +49,9 @@ TO BE TESTED:
 
 
 
-
-
+RESULTS:
+- Someone took something from oyur belt is tied to owner of dead corpse after respawn
+	- And interaction will not be deleted after being picked up
 
 
 
