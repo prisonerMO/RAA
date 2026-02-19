@@ -53,8 +53,9 @@ RESULTS:
 - Someone took something from oyur belt is tied to owner of dead corpse after respawn
 	- And interaction will not be deleted after being picked up
 
-
-
+- Drinking from belt fails to delete item from belt
+- Cutting down tree never actually cuts tree
+- Remove full ACE from Include
 
 
 
