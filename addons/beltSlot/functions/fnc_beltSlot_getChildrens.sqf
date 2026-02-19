@@ -27,6 +27,9 @@ params [["_unit", ACE_player]];
 private _actions = [];
 private _cfgWeaponsBase = configFile >> "CfgWeapons";
 private _cfgMagazinesBase = configFile >> "CfgMagazines";
+private _items = +(_unit call ace_common_fnc_uniqueItems);
+_items append magazines _unit;
+_items pushBackUnique headgear _unit;
 {
 //private _configToSearch = "ItemInfo" >> "mass";
 
@@ -48,21 +51,18 @@ private _config = _cfgWeapons;
 			_config = _cfgWeapons;
 		};
 		
-		
 		private _displayName = getText (_config >> "displayName");
 		private _picture = getText (_config >> "picture");
 		
-		
 		private _action = [_x, _displayName, _picture, {_this call FUNC(beltSlot_doMoveToBelt)}, {true}, {}, _x] call ace_interact_menu_fnc_createAction;
-	//	_actions pushBack [_action, [], _unit];
 		_actions pushBack [_action, [], _unit];
 		
 		
 	};
 	
-	
-} forEach ((_unit call ace_common_fnc_uniqueItems) + magazines _unit);
+} forEach _items;
 
+systemChat format ["RAA_belt_getChild: %1 items: %2", count _actions, count _items];
 
 
 _actions

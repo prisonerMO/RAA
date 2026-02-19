@@ -445,19 +445,17 @@ QPATHTOF(pics\icon_fog.paa)
 
 
 
-
+/*		IS BUGGED FOR SOME REASON, DISABLED in v2.0 FOR NOW
 [	"RAA", "Copy Terrain object", {
 	// Function to execute once module is placed down
 	params ["_pos","_object"];
 	
-//	[_pos] call RAA_zeus_fnc_module_copyTerrainObject;
 	[_pos] call FUNC(module_copyTerrainObject);
 	
 	},
-//	"\r\misc\addons\RAA_zeus\pics\icon_copy.paa"
 	QPATHTOF(pics\icon_copy.paa)
 ] call zen_custom_modules_fnc_register;
-
+*/
 
 
 

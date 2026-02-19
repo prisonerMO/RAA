@@ -53,6 +53,7 @@ if (_beltData isEqualTo []) exitWith {
 private _classname = _beltData select 0;
 private _object = _beltData select 3;
 private _weight = _beltData param [4, 0];
+private _itemType = _beltData param [6, 0];
 
 
 // Check if there's enough space in inventory
@@ -60,54 +61,72 @@ private _uniform = true;
 private _vest = true;
 private _backpack = true;
 private _externalContainer = false;
+private _output = false;
 switch (_container) do {
-	case (0): {_uniform = true; _vest = false; _backpack = false};
-	case (1): {_uniform = false; _vest = true; _backpack = false};
-	case (2): {_uniform = false; _vest = false; _backpack = true};
-	case (9): {_externalContainer = true};
+	case (0): {_uniform = true; _vest = false; _backpack = false};	// Uniform
+	case (1): {_uniform = false; _vest = true; _backpack = false};	// Vest
+	case (2): {_uniform = false; _vest = false; _backpack = true};	// Backpack
+	case (3): {_externalContainer = true};							// Headgear
+	case (9): {_externalContainer = true};							// Ground
 };
 
-if !(_externalContainer) then {
-	if !([_unit, _classname, 1, _uniform, _vest, _backpack] call CBA_fnc_canAddItem) exitWith {
+
+if (!_externalContainer && {!([_unit, _classname, 1, _uniform, _vest, _backpack] call CBA_fnc_canAddItem)}) exitWith {
+	systemChat "No space in inventory";
+	false
+};
+
+// Check target slot is head or general inventory.
+private _oldHeadGear = "";
+if (_container isEqualTo 3) then {
+
+	// Check if item actually is headgear and, if it is, put hat on.
+	if (_itemType isEqualTo 605) then {
+
+		_oldHeadGear = headgear _unit;
+		_unit addHeadgear _className;
+	} else {
 		_exit = true;
-		systemChat "No space in inventory";
 	};
-};
-if (_exit) exitWith {false};
-
-
-// Add item to unit's inventory
-switch (_container) do {
-	case (0): {_unit addItemToUniform _classname};
-	case (1): {_unit addItemToVest _classname};
-	case (2): {_unit addItemToBackpack _classname};
-	case (9): {	// External container
-		private _container = _unit getVariable [QGVAR(beltSlot_openedContainer), objNull];
-		if (isNull _container) then {
-			_container = createVehicle ["GroundWeaponHolder", position _unit, [], 0, "CAN_COLLIDE"];
-			_unit setVariable [QGVAR(beltSlot_openedContainer), _container];
+} else {
+	
+	// Add item to unit's inventory
+	switch (_container) do {
+		case (0): {_unit addItemToUniform _classname};
+		case (1): {_unit addItemToVest _classname};
+		case (2): {_unit addItemToBackpack _classname};
+		case (9): {	// External container
+			private _container = _unit getVariable [QGVAR(beltSlot_openedContainer), objNull];
+			if (isNull _container) then {
+				_container = createVehicle ["GroundWeaponHolder", position _unit, [], 0, "CAN_COLLIDE"];
+				_unit setVariable [QGVAR(beltSlot_openedContainer), _container];
+			};
+			//	_container addItemCargoGlobal [_classname, 1];
+				private _success = [_container, _classname, 1, true] call CBA_fnc_addItemCargo;										// TODO NOTE: CBA_fnc_addItemCargo is really bad fnc! Replace with something better if possible!
+				if (GVAR(debug)) then {systemChat format ["[RAA_beltSlot] Added %1 to %2. Success: %3", _classname, _container, _success];};
 		};
-		//	_container addItemCargoGlobal [_classname, 1];
-			private _success = [_container, _classname, 1, true] call CBA_fnc_addItemCargo;										// TODO NOTE: CBA_fnc_addItemCargo is really bad fnc! Replace with something better if possible!
-			if (GVAR(debug)) then {systemChat format ["[RAA_beltSlot] Added %1 to %2. Success: %3", _classname, _container, _success];};
+		default {_unit addItem _classname};
 	};
-	default {_unit addItem _classname};
 };
+
+if (_exit) exitWith {false};
 
 if (GVAR(debug)) then {systemChat format ["[RAA_beltSlot] Moving %1 to inventory %2", _classname, _container];};
 
 // Remove 3D model from belt
 deleteVehicle _object;
 
-
 // Remove virtual weight of item from player
 [_unit, _unit, _weight * -1] call ace_movement_fnc_addLoadToUnitContainer;
-
 
 // Now clear our reference variable
 _beltDataFull set [_slot, nil];
 _unit setVariable [QGVAR(data), _beltDataFull];
 
+// Move current helmet to belt if we moved headgear from belt to head
+if (_oldHeadGear isNotEqualTo "") then {
+	["", _unit, _oldHeadGear, true, _slot] call FUNC(beltSlot_doMoveToBelt);
+};
 
 // If inventory screen is open refresh belt images
 if !(isNull findDisplay 602) then {

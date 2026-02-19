@@ -20,7 +20,7 @@ params ["_unit", "_corpse"];
 private _beltData = _unit getVariable [QGVAR(data), []];
 
 if (_beltData isEqualTo []) exitWith {};
-_unit setVariable [QGVAR(data), []];	// Clear this, its no longer needed
+_unit setVariable [QGVAR(data), [], true];	// Clear this, its no longer needed
 
 {
 	// Remove kept virtual mass of items after respawn

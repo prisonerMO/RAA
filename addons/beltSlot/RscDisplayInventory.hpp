@@ -20,10 +20,10 @@ class RscDisplayInventory {
 			colorBackground[] = {1,1,1,0.1};
 			colorSelectBackground[] = {1,1,1,0.1};
 			rowHeight = "1.75 * (((((safezoneW / safezoneH) min 1.2) / 1.2) / 25) * 1)";
-			tooltip = "Use ACE Action Menu to swap these items"; //--- ToDo: Localize;
-		//	onButtonClick = "systemChat str _this";
+			tooltip = "Use ACE Action Menu to swap these items";
+		//	onLBDrop = "systemChat str _this; RAA_debug1 = _this";
 			onLBDrop = QUOTE([ARR_6(nil,ACE_player,_this select 4 select 0 select 2,false,0,_this select 3)] call FUNC(beltSlot_doMoveToBelt));
-		//	onLBDrag = "systemChat str _this";
+		//	onLBDrag = "systemChat str _this; RAA_debug2 = _this";
 			canDrag = 1;
 		};
 		
@@ -38,7 +38,7 @@ class RscDisplayInventory {
 			h = QUOTE(0.044 * safezoneH);
 			colorBackground[] = {1,1,1,0.1};
 			rowHeight = "1.75 * (((((safezoneW / safezoneH) min 1.2) / 1.2) / 25) * 1)";
-			tooltip = "Use ACE Action Menu to swap these items"; //--- ToDo: Localize;
+			tooltip = "Use ACE Action Menu to swap these items";
 		//	onButtonClick = "systemChat str _this";
 			onLBDrop = QUOTE([ARR_6(nil,ACE_player,_this select 4 select 0 select 2,false,1,_this select 3)] call FUNC(beltSlot_doMoveToBelt));
 		//	onLBDrag = "systemChat str _this";
@@ -50,24 +50,35 @@ class RscDisplayInventory {
 		
 		
 		
-		
+		// Containers
 		class GroundContainer: RscListbox {
 		//	onLBDrop = QUOTE([-1, player, 9, _this select 3] call FUNC(beltSlot_doMoveFrombelt));
 			onLBDrop = QUOTE(if (_this select 3 in [ARR_2(1288,1289)]) then {[ARR_4(-1,ACE_player,9,_this select 3)] call FUNC(beltSlot_doMoveFrombelt)});
 		};
-		
 		class UniformContainer: GroundContainer {		// idc = 633;		Select 3
 			onLBDrop = QUOTE(if (_this select 3 in [ARR_2(1288,1289)]) then {[ARR_4(-1,ACE_player,0,_this select 3)] call FUNC(beltSlot_doMoveFrombelt)});
 		};
-		
 		class VestContainer: UniformContainer {		// idc = 638;
 			onLBDrop = QUOTE(if (_this select 3 in [ARR_2(1288,1289)]) then {[ARR_4(-1,ACE_player,1,_this select 3)] call FUNC(beltSlot_doMoveFrombelt)});
 		};
-		
 		class BackpackContainer: UniformContainer {		// idc = 619;
 			onLBDrop = QUOTE(if (_this select 3 in [ARR_2(1288,1289)]) then {[ARR_4(-1,ACE_player,2,_this select 3)] call FUNC(beltSlot_doMoveFrombelt)});
 		};
-		
+
+		// Slots (where uniform/ vest/ backpack item is)
+		class SlotPrimary;
+		class SlotHeadgear: SlotPrimary {		// idc = 6240;
+			onLBDrop = QUOTE(if (_this select 3 in [ARR_2(1288,1289)]) then {[ARR_4(-1,ACE_player,3,_this select 3)] call FUNC(beltSlot_doMoveFrombelt)});
+		};
+		class UniformSlot: SlotPrimary {		// idc = 6331
+			onLBDrop = QUOTE(if (_this select 3 in [ARR_2(1288,1289)]) then {[ARR_4(-1,ACE_player,0,_this select 3)] call FUNC(beltSlot_doMoveFrombelt)});
+		};
+		class VestSlot: SlotPrimary {			// idc = 6381
+			onLBDrop = QUOTE(if (_this select 3 in [ARR_2(1288,1289)]) then {[ARR_4(-1,ACE_player,1,_this select 3)] call FUNC(beltSlot_doMoveFrombelt)});
+		};
+		class BackpackSlot: SlotPrimary {		// idc = 6191
+			onLBDrop = QUOTE(if (_this select 3 in [ARR_2(1288,1289)]) then {[ARR_4(-1,ACE_player,2,_this select 3)] call FUNC(beltSlot_doMoveFrombelt)});
+		};
 	};
 	
 	

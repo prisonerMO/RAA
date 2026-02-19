@@ -50,7 +50,7 @@ if (RAA_zeus_debug) then {systemChat format ["[RAA_zeus] Found %1 | %2", _classn
 
 
 [_object, {
-	systemChat str _this; 
+//	systemChat str _this; 
 	if (_this select 0) then {
 		private _obj = createVehicle [_this select 3 select 0, ASLToAGL (_this select 2), [], 0, "NONE"];
 		{_x addCuratorEditableObjects [[_obj], false];

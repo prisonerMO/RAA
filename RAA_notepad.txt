@@ -9,7 +9,6 @@
 
 ================ TO DO ===================================
 - BeltItems: Check input array filter
-- BeltItems: Add ACE Interact option to take item from other player's belt
 - Convert FieldRationWarnings.pbo
 - Rewrite fieldRation_Warnings
 - Backpack:
@@ -21,6 +20,7 @@
 	https://github.com/acemod/ACE3/blob/master/addons/common/functions/fnc_parseList.sqf
 
 - Delete fnc_onMenuOpen_loadoutOverview
+- beltSlot add option to move helmet directly to belt
 
 
 ================ CHANGE NOTES ===================================
@@ -36,7 +36,7 @@ v2.0
 - [beltSlot] Added option to ACE menu to drop item to ground from belt. Also fixed options for right belt affecting left side only.
 - [beltSlot] Fixed bottles left floating after user disconnects from MP server
 - [beltSlot] Added ACE option for others to grab item directly from another player's belt.
-
+- [beltSlot] Added ability to move helmet directly from belt to head. Also swaps current headgear with item on belt if possible.
 
 
 

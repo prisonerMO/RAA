@@ -21,6 +21,7 @@
 */
 params ["", ["_unit", objNull], ["_classname", ""], ["_ignoreInventory", false], ["_slotToUse", -1], ["_source", -1]];
 
+//[COMPNAME, true, "LOG", format ["Params %1", _this]] call EFUNC(common,debugNew);
 
 if !(local _unit) exitWith {
 	[COMPNAME, true, "LOG", format ["doMoveToBelt: Failed to move to belt: %1 is not local", _unit]] call EFUNC(common,debugNew);
@@ -73,6 +74,10 @@ if (_slotToUse < 0) exitWith {
 	false
 };
 
+// Support for headgear slot
+if (_source isEqualTo 6240) then {
+	_classname = headgear _unit;
+};
 
 // Find item's 3D model path
 private _config1 = configFile >> "CfgWeapons";
@@ -126,26 +131,49 @@ if (_ignoreInventory) then {
 } else {
 	private _container = _unit;
 	[COMPNAME, GVAR(debug), "INFO", format ["Source: %1", _source]] call EFUNC(common,debugNew);
+
+	// Handle exception sources
+	private _exit = false;
+	switch (_source) do {
+		case (632);		// Ground
+		case (640): {	// External inventory (box, vehicle etc)
+			container = (_unit getVariable [QGVAR(beltSlot_openedContainer), objNull]);
+			if (isNull _container) exitWith {[COMPNAME, GVAR(debug), "WARNING", format ["Failed to find external inventory to remove item from! %1", _container]] call EFUNC(common,debugNew); false};
+		};
+		case (6240): {	// Headgear
+			removeHeadgear _unit;
+			_success = true;
+			_exit = true;			
+		};
+	};
+
+	if (_exit) exitWith {false};
+/*
 	if (_source isEqualTo 632 || _source isEqualTo 640) then {
 		// Item was picked up from external container
 		_container = _unit getVariable [QGVAR(beltSlot_openedContainer), objNull];
 		if (isNull _container) exitWith {[COMPNAME, GVAR(debug), "WARNING", format ["Failed to find external inventory to remove item from! %1", _container]] call EFUNC(common,debugNew); false};
-		
-	} else {
-		// Item is from unit's uniform
-	//	_unit removeItem _classname;
+	};
+
+	// Headgear slot
+	if (_source isEqualTo 6240) exitWith {
+		removeHeadgear _unit;
 		_success = true;
 	};
-	
-	private _isHuman = _container isKindOf "CAManBase";	// We need to differiate corpses from boxes
-	switch (_itemType select 0) do {
-		case ("Equipment");
-		case ("Item"): {if (_isHuman) then {_success = [_container, _classname] call CBA_fnc_removeItem} else {_success = [_container, _classname] call CBA_fnc_removeItemCargo}};
-		case ("Magazine");
-		case ("Mine"): {if (_isHuman) then {_success = [_container, _classname] call CBA_fnc_removeMagazine} else {_success = [_container, _classname] call CBA_fnc_removeMagazineCargo}};
-		case ("Weapon"): {if (_isHuman) then {_success = [_container, _classname] call CBA_fnc_removeWeapon} else {_success = [_container, _classname] call CBA_fnc_removeWeaponCargo}};
+*/
+	if (_classname isEqualTo headgear _unit) then {
+		removeHeadgear _unit;
+		_success = true;
+	} else {
+		private _isHuman = _container isKindOf "CAManBase";	// We need to differiate corpses from boxes
+		switch (_itemType select 0) do {
+			case ("Equipment");
+			case ("Item"): {if (_isHuman) then {_success = [_container, _classname] call CBA_fnc_removeItem} else {_success = [_container, _classname] call CBA_fnc_removeItemCargo}};
+			case ("Magazine");
+			case ("Mine"): {if (_isHuman) then {_success = [_container, _classname] call CBA_fnc_removeMagazine} else {_success = [_container, _classname] call CBA_fnc_removeMagazineCargo}};
+			case ("Weapon"): {if (_isHuman) then {_success = [_container, _classname] call CBA_fnc_removeWeapon} else {_success = [_container, _classname] call CBA_fnc_removeWeaponCargo}};
+		};
 	};
-	
 	[COMPNAME, GVAR(debug), "INFO", format ["_container: %1, _itemType: %2, _success: %3", _container, _itemType, _success]] call EFUNC(common,debugNew);
 	//_success = true;
 };
@@ -164,7 +192,6 @@ if !(_success) exitWith {
 switch (_className) do {
 	case ("SatchelCharge_Remote_Mag"): {_kindOf = 0};
 };
-
 
 
 // Now that we have model path we can spawn it and place it on belt
@@ -234,6 +261,7 @@ if (_slotToUse isEqualTo 0) then {
 private _displayName = getText (_config >> "displayName");
 private _picture = getText (_config >> "picture");
 private _canDrink = (getNumber (_config >> "acex_field_rations_thirstQuenched")) > 0;
+private _itemTypeCfg = getNumber (configFile >> "CfgWeapons" >> _className >> "ItemInfo" >> "type");
 
 // Get item's mass
 private _weight = 0;
@@ -246,12 +274,11 @@ if (_kindOf isEqualTo 1 || _kindOf isEqualTo 3) then {
 
 
 // Array is:
-// [[SLOT1_CLASSNAME, SLOT1_PICPATH, SLOT1_ITEMNAME, SLOT1_OBJECT, WEIGHT, DRINKABLE], [SLOT2_CLASSNAME, SLOT2_PICPATH, SLOT2_ITEMNAME, SLOT2_OBJECT, WEIGHT, DRINKABLE]]
+// [[SLOT1_CLASSNAME, SLOT1_PICPATH, SLOT1_ITEMNAME, SLOT1_OBJECT, WEIGHT, DRINKABLE, ITEMTYPE], [SLOT2_CLASSNAME, SLOT2_PICPATH, SLOT2_ITEMNAME, SLOT2_OBJECT, WEIGHT, DRINKABLE, ITEMTYPE]]
 
 // Save all this trash so we can find it again
-_beltSlots set [_slotToUse, [_classname, _picture, _displayName, _object, _weight, _canDrink]];
+_beltSlots set [_slotToUse, [_classname, _picture, _displayName, _object, _weight, _canDrink, _itemTypeCfg]];
 _unit setVariable [QGVAR(data), _beltSlots, true];
-publicVariableServer QGVAR(data);		// Send belt data to server. This is only used for deleting beltItems on user disconnect
 
 // Add mass of item to player as virtual mass
 [_unit, _unit, _weight] call ace_movement_fnc_addLoadToUnitContainer;

@@ -2,7 +2,7 @@
 
 class RscText;
 class RscStructuredText;
-class RscFrame;
+//class RscFrame;
 class RscListbox;
 
 class ace_arsenal_display {
