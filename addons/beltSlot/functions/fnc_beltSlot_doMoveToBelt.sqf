@@ -137,7 +137,7 @@ if (_ignoreInventory) then {
 	switch (_source) do {
 		case (632);		// Ground
 		case (640): {	// External inventory (box, vehicle etc)
-			container = (_unit getVariable [QGVAR(beltSlot_openedContainer), objNull]);
+			_container = _unit getVariable [QGVAR(beltSlot_openedContainer), objNull];
 			if (isNull _container) exitWith {[COMPNAME, GVAR(debug), "WARNING", format ["Failed to find external inventory to remove item from! %1", _container]] call EFUNC(common,debugNew); false};
 		};
 		case (6240): {	// Headgear

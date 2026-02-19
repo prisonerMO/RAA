@@ -6,10 +6,7 @@
 
 
 
-
 ================ TO DO ===================================
-- BeltItems: Check input array filter
-- Convert FieldRationWarnings.pbo
 - Rewrite fieldRation_Warnings
 - Backpack:
 	- Add option to throw backpack (over wall)
@@ -18,9 +15,6 @@
 - CBA error setting:
 	["text", true, false] call ace_common_fnc_parseList
 	https://github.com/acemod/ACE3/blob/master/addons/common/functions/fnc_parseList.sqf
-
-- Delete fnc_onMenuOpen_loadoutOverview
-- beltSlot add option to move helmet directly to belt
 
 
 ================ CHANGE NOTES ===================================
@@ -49,9 +43,9 @@ TO BE TESTED:
 - Zeus module Kill Player works
 - Beltslot: Full functionality. Especially:
 	- Grabbing items from other player's belts
-	- bottles deleting if one player disconnectects
+	- bottles getting deleted if player disconnectects from server
 	- Drinking directly from belt updating beltitem correctly
-
+	- Get killed on server: what happens to bottles? ACE loadout saving enabled/ disabled
 
 
 
