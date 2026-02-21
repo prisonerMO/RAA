@@ -178,7 +178,7 @@ if (_ignoreInventory) then {
 	//_success = true;
 };
 if !(_success) exitWith {
-	[COMPNAME, GVAR(debug), "ERROR", format ["Failed to delete %1 from container %2!", _itemType, _container]] call EFUNC(common,debugNew);
+	[COMPNAME, GVAR(debug), "ERROR", format ["Failed to delete %1!", _itemType]] call EFUNC(common,debugNew);
 	false
 };
 
