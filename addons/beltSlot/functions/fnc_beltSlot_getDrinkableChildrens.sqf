@@ -6,7 +6,7 @@
  * Called from: ACE action menu
  * Local to:	Client
  * Parameter(s):
- 0:	Unit who's inventory we're looking <OBJECT, default player>
+ 0:	Unit whose inventory we're looking <OBJECT, default player>
  1:	
  2:	
  3:	
@@ -20,38 +20,27 @@
 params [["_unit", ACE_player]];
 
 
-
 private _beltItems = _unit getVariable [QGVAR(data), []];
 if (count _beltItems isEqualTo 0) exitWith {[]};
-
 
 
 private _actions = [];
 private _cfgWeapons = configFile >> "CfgWeapons"; 
 {
-//private _configToSearch = "ItemInfo" >> "mass";
-
 	private _className = _x param [0, ""];
 	private _config = _cfgWeapons >> _className;
-	if ((_className isNotEqualTo "") && (getNumber (_config >> "acex_field_rations_thirstQuenched") > 0)) then {
+	private _canDrink = _x param [5, false];
+	if (_className isNotEqualTo "" && _canDrink) then {
 		
+		private _displayName = format ["%1 (on Belt)", getText (_config >> "displayName")];
+		private _picture = getText (_config >> "picture");
 		
-		
-		if ((getNumber (_config >> "acex_field_rations_thirstQuenched")) > 0) then {
+		private _action = [_x, _displayName, _picture, {[_this] call FUNC(beltSlot_doDrinkFromBelt)}, {true}, {}, _forEachIndex, nil, nil, [false, true, false, false, false]] call ace_interact_menu_fnc_createAction;
+		_actions pushBack [_action, [], _unit];
 			
-			private _displayName = format ["%1 (on Belt)", getText (_config >> "displayName")];
-			private _picture = getText (_config >> "picture");
-			
-			
-			private _action = [_x, _displayName, _picture, {[_this] call FUNC(beltSlot_doDrinkFromBelt)}, {true}, {}, _forEachIndex, nil, nil, [false, true, false, false, false]] call ace_interact_menu_fnc_createAction;
-			_actions pushBack [_action, [], _unit];
-			
-			
-		};
 	};
 	
 } forEach _beltItems;
-
 
 
 _actions

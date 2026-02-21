@@ -178,7 +178,7 @@ if (_ignoreInventory) then {
 	//_success = true;
 };
 if !(_success) exitWith {
-	systemChat "[RAA_beltSlot] Failed to delete item from container!";
+	[COMPNAME, GVAR(debug), "ERROR", format ["Failed to delete %1 from container %2!", _itemType, _container]] call EFUNC(common,debugNew);
 	false
 };
 

@@ -121,7 +121,7 @@ deleteVehicle _object;
 
 // Now clear our reference variable
 _beltDataFull set [_slot, nil];
-_unit setVariable [QGVAR(data), _beltDataFull];
+_unit setVariable [QGVAR(data), _beltDataFull, true];
 
 // Move current helmet to belt if we moved headgear from belt to head
 if (_oldHeadGear isNotEqualTo "") then {

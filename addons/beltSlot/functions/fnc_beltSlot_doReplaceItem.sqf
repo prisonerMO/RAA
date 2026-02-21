@@ -44,7 +44,7 @@ if !(_deletionSuccess) exitWith {false};
 if (_newItem isEqualTo "") exitWith {true};
 
 // Now add new item
-["", _player, _newItem, _useItemFromInventory, _slot] call FUNC(beltSlot_doMoveToBelt);
+["", _player, _newItem, !_useItemFromInventory, _slot] call FUNC(beltSlot_doMoveToBelt);
 
 
 true

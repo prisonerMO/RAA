@@ -41,8 +41,9 @@ if (alive _target) then {
 } else {
 
     // This target is a dead corpse, we can directly remove this item.
+    deleteVehicle (_beltData param [3, objNull]);
     _beltDataFull set [_slot, nil];
-    _target setVariable [QGVAR(data), _beltData, true];
+    _target setVariable [QGVAR(data), _beltDataFull, true];
 };
 
 

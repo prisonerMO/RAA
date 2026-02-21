@@ -31,31 +31,19 @@ v2.0
 - [beltSlot] Fixed bottles left floating after user disconnects from MP server
 - [beltSlot] Added ACE option for others to grab item directly from another player's belt.
 - [beltSlot] Added ability to move helmet directly from belt to head. Also swaps current headgear with item on belt if possible.
+- [beltSlot] Fixed drinking while when drinking from belt will delete entire bottle instead of part of it.
 
 
 
-
-TO BE TESTED:
-- Hunder-Thirst warnings (entire pbo)
-- Cutting tree falls away from player
-- AI consumeable items spawning correctly to pre-placed & zeus-placed units
-- AED able to be placed on ground from player & from others inventories
-- Zeus module Kill Player works
-- Beltslot: Full functionality. Especially:
-	- Grabbing items from other player's belts
-	- bottles getting deleted if player disconnectects from server
-	- Drinking directly from belt updating beltitem correctly
-	- Get killed on server: what happens to bottles? ACE loadout saving enabled/ disabled
 
 
 
 RESULTS:
-- Someone took something from oyur belt is tied to owner of dead corpse after respawn
-	- And interaction will not be deleted after being picked up
+- Someone took something from oyur belt is tied to owner of dead corpse after respawn	FIXED	TODO TEST
+	- And interaction will not be deleted after being picked up							FIXED	TODO TEST
 
 - Drinking from belt fails to delete item from belt
 - Cutting down tree never actually cuts tree
-- Remove full ACE from Include
 
 
 

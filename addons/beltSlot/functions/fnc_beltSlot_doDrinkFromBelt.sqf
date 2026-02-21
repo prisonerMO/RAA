@@ -6,12 +6,7 @@
  * Called from: ACE action
  * Local to:	Client
  * Parameter(s):
- 0:	Target (Not used)
- 0:	Unit <OBJECT, default player>
- 1:	Slot to use item from <NUMBER, default -1 (unspecified)>
- 2:	
- 3:	
- 4:	
+    CHECK CODE
  *
  Returns: 
  *

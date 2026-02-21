@@ -119,10 +119,10 @@ private _fnc_onSuccess = {
 			  _player removeItem _consumeItem;
 		 };
 	
-    // Add replacement item if needed
-    if (_replacementItem != "") then {
-        [_player, _replacementItem] call ace_common_fnc_addToInventory;
-    };
+		// Add replacement item if needed
+		if (_replacementItem != "") then {
+			[_player, _replacementItem] call ace_common_fnc_addToInventory;
+		};
 	};
     // Handle thirst and hunger values
     if (_thirstQuenched > 0) then {
