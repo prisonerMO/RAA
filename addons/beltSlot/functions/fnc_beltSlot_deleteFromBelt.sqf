@@ -43,7 +43,7 @@ if (_beltData isEqualTo []) exitWith {
 
 // Get data about item from belt
 //private _classname = _beltData select 0;
-private _object = _beltData select 3;
+private _object = _beltData param [3, objNull];
 private _weight = _beltData param [4, 0];
 
 

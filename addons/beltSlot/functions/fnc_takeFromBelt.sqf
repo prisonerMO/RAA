@@ -26,8 +26,6 @@ if (_beltData isEqualTo []) exitWith {
 
 private _classname = _beltData param [0, ""];
 
-[COMPNAME, GVAR(debug), "INFO", format ["Taking object %1 from %2 by %3 from slot %4", _classname, _target, _player, _slot]] call EFUNC(common,debugNew);
-
 // Remove this item from its owner's belt. If owner is alive this has to be done on their machine
 if (alive _target) then {
 
@@ -46,6 +44,7 @@ if (alive _target) then {
     _target setVariable [QGVAR(data), _beltDataFull, true];
 };
 
+[COMPNAME, GVAR(debug), "INFO", format ["Taking object %1 from %2 by %3 from slot %4. Target is dead: %5", _classname, _target, _player, _slot, alive _target]] call EFUNC(common,debugNew);
 
 // Add visual feedback
 [_player, "PutDown"] call ACE_common_fnc_doGesture;
