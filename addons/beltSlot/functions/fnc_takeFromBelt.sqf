@@ -34,8 +34,8 @@ if (alive _target) then {
     [_slot, _target] remoteExec [QFUNC(beltSlot_deleteFromBelt), _target];
 
     if (isPlayer _target) then {
-        ["Someone took something from your belt.", false, 7, 1] remoteExec ["ace_common_fnc_displayText", _target];
-    //  ["Someone took something from your belt"] remoteExec ["systemChat", _target];   // TODO: switch systemChat to ACE hint
+        ["Someone took something from your belt.", false, 8, 1] remoteExec ["ace_common_fnc_displayText", _target];
+    //  [["Test: %1", 123], 1.5] call ace_common_fnc_displayTextStructured
         [4, 1, 5] remoteExec ["addCamShake", _target];
     };
 } else {

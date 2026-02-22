@@ -27,7 +27,15 @@
 [
 	QGVAR(enabled),
 	"CHECKBOX",
-	["Enable Belt Slot", "Allow using belt to carry up to two items or magazines in inventory."],
+	["Enable Belt Slot", "Allow using belt to carry up to two items or magazines."],
+	["RAA", "Belt Slot"],
+	true, // data for this setting (Default value)
+	0 // "_isGlobal" flag.
+] call CBA_fnc_addSetting;
+[
+	QGVAR(enabled_interactMenu),
+	"CHECKBOX",
+	["Show in ACE Interaction", "If disabled Belt can only be interacted with in inventory drag-and-drop system."],
 	["RAA", "Belt Slot"],
 	true, // data for this setting (Default value)
 	0 // "_isGlobal" flag.
@@ -39,10 +47,7 @@
     ["Auto-move bottles to belt", "Automatically moves water bottle/ canteen to Belt Slots on mission start"], // Pretty name shown inside the ingame settings menu. Can be stringtable entry.
     ["RAA", "Belt Slot"], // Pretty name of the category where the setting can be found. Can be stringtable entry.
     true, // data for this setting (Default value)
-    0, // "_isGlobal" flag. Set this to 1 to always have this setting synchronized between all clients in multiplayer
-    {
-		 
-    } // function that will be executed once on mission start and every time the setting is changed.
+    0 // "_isGlobal" flag. Set this to 1 to always have this setting synchronized between all clients in multiplayer
 ] call CBA_fnc_addSetting;
 
 [	
@@ -51,10 +56,7 @@
     "Debug: BeltSlot", // Pretty name shown inside the ingame settings menu. Can be stringtable entry.
     ["RAA", "Debug"], // Pretty name of the category where the setting can be found. Can be stringtable entry.
     false, // data for this setting (Default value)
-    0, // "_isGlobal" flag. Set this to 1 to always have this setting synchronized between all clients in multiplayer
-    {
-		
-    } // function that will be executed once on mission start and every time the setting is changed.
+    0 // "_isGlobal" flag. Set this to 1 to always have this setting synchronized between all clients in multiplayer
 ] call CBA_fnc_addSetting;
 
 
