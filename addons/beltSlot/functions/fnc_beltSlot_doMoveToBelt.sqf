@@ -183,11 +183,6 @@ if !(_success) exitWith {
 };
 
 
-
-
-//if (GVAR(debug)) then {systemChat format ["[RAA_beltSlot] Item type: %1", _kindOf];};
-
-
 // Overrides for weirdly oriented stuff
 switch (_className) do {
 	case ("SatchelCharge_Remote_Mag"): {_kindOf = 0};
@@ -256,6 +251,8 @@ if (_slotToUse isEqualTo 0) then {
 	*/
 };
 
+// Potential fix for potential clipping problems
+[_object, false] remoteExec ["setPhysicsCollisionFlag", 0];
 
 // Get remaining info we need
 private _displayName = getText (_config >> "displayName");

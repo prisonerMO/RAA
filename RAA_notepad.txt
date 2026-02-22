@@ -2,7 +2,7 @@
 - BeltItems: Drinking half bottle deletes entire bottle
 - ACE Arsenal Overview & Item Description will not hide with rest of interface
 - BeltSlot: After client disconnects from MP server bottles their bottles are removed, even if their body remains to be controlled by AI.
-
+- BeltSlot: After drag-and-dropping belt items in inventory screen it get stuck in red/white colors. This is purely visual bug.
 
 
 
@@ -32,7 +32,7 @@ v2.0
 - [beltSlot] Added ACE option for others to grab item directly from another player's belt.
 - [beltSlot] Added ability to move helmet directly from belt to head. Also swaps current headgear with item on belt if possible.
 - [beltSlot] Fixed drinking while when drinking from belt will delete entire bottle instead of part of it.
-
+- [beltSlot] Added potential fix for potential clipping problems related to items on belt
 
 
 

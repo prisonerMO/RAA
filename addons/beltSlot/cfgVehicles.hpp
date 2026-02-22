@@ -19,12 +19,11 @@ class CfgVehicles {
 						statement = "";
 					//	icon = QPATHTOF(pics\icon_cutting_tree);
 						insertChildren = QUOTE(call FUNC(beltSlot_getChildrens));
-						
 					};
 					
 					class RAA_belSlot_item1 {
 						displayName = "%1";
-						condition = QUOTE(0 call FUNC(beltSlot_canMoveFrombelt));
+						condition = QUOTE({_player getVariable [ARR_2(QQGVAR(data),[])] param [ARR_2(0,[])] isNotEqualTo []});
 					//    exceptions[] = {};
 						statement = QUOTE(0 call FUNC(beltSlot_doMoveFrombelt));
 						icon = "";
@@ -33,7 +32,7 @@ class CfgVehicles {
 					
 						class RAA_beltSlot_moveFromBelt {
 							displayName = "Move to inventory";
-							condition = QUOTE(true);
+							condition = QUOTE(0 call FUNC(beltSlot_canMoveFrombelt));
 						//    exceptions[] = {};
 							statement = QUOTE(0 call FUNC(beltSlot_doMoveFrombelt));
 							icon = "";
@@ -56,16 +55,16 @@ class CfgVehicles {
 					
 					class RAA_belSlot_item2 {
 						displayName = "%1";
-						condition = QUOTE(1 call FUNC(beltSlot_canMoveFrombelt));
+						condition = QUOTE({_player getVariable [ARR_2(QQGVAR(data),[])] param [ARR_2(1,[])] isNotEqualTo []});
 					//    exceptions[] = {};
 						statement = QUOTE(1 call FUNC(beltSlot_doMoveFrombelt));
 						icon = "";
 						modifierFunction = QUOTE([ARR_5(_this select 3,1,_player,""Move %1 to inventory"",true)] call FUNC(beltSlot_actionModifier));
 					
 
-						class RAA_beltSlot_moveFromBelt2 {
+						class RAA_beltSlot_moveFromBelt {
 							displayName = "Move to inventory";
-							condition = QUOTE(true);
+							condition = QUOTE(1 call FUNC(beltSlot_canMoveFrombelt));
 							exceptions[] = {};
 							statement = QUOTE(1 call FUNC(beltSlot_doMoveFrombelt));
 							icon = "";
@@ -78,7 +77,7 @@ class CfgVehicles {
 							icon = "";
 						};
 
-						class RAA_beltSlot_dropToGround2 {
+						class RAA_beltSlot_dropToGround {
 							displayName = "Drop to ground";
 							condition = QUOTE(true);
 						//    exceptions[] = {};

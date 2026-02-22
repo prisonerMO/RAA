@@ -14,7 +14,7 @@
  *
  Returns: Can move item <BOOL>
  *
- * Example:	[0, player] call RAA_misc_fnc_beltSlot_canMoveFrombelt
+ * Example:	[0, player] call RAA_beltSlot_fnc_beltSlot_canMoveFrombelt
 */
 
 params ["_slot", ["_unit", ACE_player]];
