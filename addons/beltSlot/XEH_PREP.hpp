@@ -8,6 +8,7 @@ PREP(beltSlot_doMoveToBelt);
 PREP(beltSlot_doReplaceItem);
 PREP(beltSlot_getChildrens);
 PREP(beltSlot_getDrinkableChildrens);
+PREP(beltSlot_getGrabPosition);
 PREP(beltSlot_getItems);
 PREP(beltSlot_hasItem);
 PREP(beltSlot_onInventoryOpened);
