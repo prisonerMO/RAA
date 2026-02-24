@@ -44,7 +44,7 @@ if (alive _target) then {
     _target setVariable [QGVAR(data), _beltDataFull, true];
 };
 
-[COMPNAME, GVAR(debug), "INFO", format ["Taking object %1 from %2 by %3 from slot %4. Target is dead: %5", _classname, _target, _player, _slot, alive _target]] call EFUNC(common,debugNew);
+[COMPNAME, GVAR(debug), "INFO", format ["Taking object %1 from %2 by %3 from slot %4. Target is dead: %5", _classname, _target, _player, _slot, !alive _target]] call EFUNC(common,debugNew);
 
 // Add visual feedback
 [_player, "PutDown"] call ACE_common_fnc_doGesture;
