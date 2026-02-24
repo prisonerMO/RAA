@@ -210,7 +210,21 @@ if (_slotToUse isEqualTo 0) then {
 		};
 		case (3): {	// Magazine
 			_object attachTo [_unit, [-0.2, 0, -0.05], "Pelvis", true]; 
-			_object setVectorDirAndUp [[1, 5, 0], [0, 0, 1]];
+			
+			// Do additional check to see if model is in wrong orientation
+			private _boundingBox = 0 boundingBoxReal _object select 0;
+
+			private _selected = _boundingBox find selectMin _boundingBox;
+			if (_selected <= 2) then {
+
+			private _turn = [90, 0, 0] select _selected;
+			_object setDir _turn;
+			// TODO: setDir requires some additional commands for MP synchronization!
+			[COMPNAME, GVAR(debug), "NOTE", format ["Rotated belt object by %1 degress", _turn]] call EFUNC(common,debugNew);
+			} else {
+				// Standard orientation
+				_object setVectorDirAndUp [[1, 5, 0], [0, 0, 1]];
+			};
 		};
 	};
 	
@@ -233,22 +247,25 @@ if (_slotToUse isEqualTo 0) then {
 		};
 		case (3): {	// Magazine
 			_object attachTo [_unit, [0.2, 0, -0.05], "Pelvis", true]; 
-			_object setVectorDirAndUp [[1, -5, 0], [0, 0, 1]];
+			
+			// Do additional check to see if model is in wrong orientation
+			private _boundingBox = 0 boundingBoxReal _object select 0;
+
+			private _selected = _boundingBox find selectMin _boundingBox;
+			if (_selected <= 2) then {
+
+			private _turn = [90, 0, 0] select _selected;
+			_object setDir _turn;
+			// TODO: setDir requires some additional commands for MP synchronization!
+			[COMPNAME, GVAR(debug), "NOTE", format ["Rotated belt object by %1 degress", _turn]] call EFUNC(common,debugNew);
+
+			} else {
+				// Standard orientation
+				_object setVectorDirAndUp [[1, -5, 0], [0, 0, 1]];
+			};
 		};
 	};
 	
-	/*
-	_object attachTo [_unit, [0.2, 0, -0.05], "Pelvis", true]; 
-	// Turn it
-	if (_isKindOfMine) then {
-		// mine
-		_object setVectorDirAndUp [[0, 1, 0], [1, 0, 0]];
-		
-	} else {
-		// Canteen
-		_object setVectorDirAndUp [[1, 0, 0], [0, 0, 1]];
-	};
-	*/
 };
 
 // Potential fix for potential clipping problems
