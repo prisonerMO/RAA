@@ -122,8 +122,7 @@ class CfgVehicles {
 					statement = QUOTE([ARR_3(0,_target,_player)] call FUNC(takeFromBelt));
 					//icon = QPATHTOF();
 					modifierFunction = QUOTE([ARR_5(_this select 3,0,_target,""Grab %1"",true)] call FUNC(beltSlot_actionModifier));
-				//	position = "( (_target modelToWorld (getPosATL _target)) vectorAdd ((_target modelToWorld (getPosATL _target 'Pelvis')) vectorDiff (_target modelToWorld (getPosATL _target))) vectorAdd [-0.2,0,-0.05] )";
-					position = QUOTE([ARR_3(-0.2,0,-0.05)]);	// TODO find correct placement
+					position = QUOTE([ARR_3(_target,'leftupleg',-0.10)] call DFUNC(beltSlot_getGrabPosition));
 					distance = 2;
 			};
 			class RAA_beltSlot_slot2 {
@@ -132,8 +131,7 @@ class CfgVehicles {
 					statement = QUOTE([ARR_3(1,_target,_player)] call FUNC(takeFromBelt));
 					//icon = QPATHTOF();
 					modifierFunction = QUOTE([ARR_5(_this select 3,1,_target,""Grab %1"",true)] call FUNC(beltSlot_actionModifier));
-				//	position = "( (_target modelToWorld (getPosATL _target)) vectorAdd ((_target modelToWorld (getPosATL _target 'Pelvis')) vectorDiff (_target modelToWorld (getPosATL _target))) vectorAdd [0.2,0,-0.05] )";
-					position = QUOTE([ARR_3(0.2,0,-0.05)]);	// TODO find correct placement
+					position = QUOTE([ARR_3(_target,'rightupleg',0.10)] call DFUNC(beltSlot_getGrabPosition));
 					distance = 2;
 			};
 		};
