@@ -83,7 +83,7 @@ if (isServer) then {
 			private _data = _unit getVariable [QGVAR(data), []];
 			if (_data isNotEqualTo []) then {
 				{
-					deleteVehicle (_this param [3, objNull]);
+					deleteVehicle (_x param [3, objNull]);
 				} forEach _data;
 			};
 		};

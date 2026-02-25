@@ -12,13 +12,11 @@
 	- Add option to throw backpack (over wall)
 	- Add (modern) option for putting packback on chest (with proper weight)
 
-
-
 - Rewrite Zeus factions status indicator
-	IN PROGRESS: Indicator is now done via config. next step: add timeout fadeout & premature hide if Zeus interface is hidden
+	IN PROGRESS: Indicator is now done via config. next step: Add premature hide if Zeus interface is hidden
 
 ================ CHANGE NOTES ===================================
-v2.0
+v2.0.0	26.2.2026
 - [ALL] Changed PBO management from Mikero tools to HEMTT
 - [fieldRation_Warnings] Finally updated to new standard. Moved CBA settings from old Motti_Misc to RAA category
 - [misc] CBA Setting for hiding ACE Unjamming was defaulted to "true". For most people this is wrong, since it is only usefull when paired with DZN Extended Jamming mod
@@ -33,18 +31,6 @@ v2.0
 - [beltSlot] Added ability to move helmet directly from belt to head. Also swaps current headgear with item on belt if possible.
 - [beltSlot] Fixed drinking while when drinking from belt will delete entire bottle instead of part of it.
 - [beltSlot] Added potential fix for potential clipping problems related to items on belt
-
-
-
-
-
-RESULTS:
-- Someone took something from oyur belt is tied to owner of dead corpse after respawn	FIXED	TODO TEST
-	- And interaction will not be deleted after being picked up							FIXED	TODO TEST
-
-- Drinking from belt fails to delete item from belt
-- Cutting down tree never actually cuts tree
-
 
 
 
