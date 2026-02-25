@@ -44,35 +44,36 @@
 	true	// needRestart flag
 ] call CBA_fnc_addSetting;
 
+
 [
-    "RAA_zeus_enableSideMarker", // Internal setting name, should always contain a tag! This will be the global variable which takes the value of the setting.
+    QGVAR(factionRelationsIndicator_enable), // Internal setting name, should always contain a tag! This will be the global variable which takes the value of the setting.
     "CHECKBOX", // setting type
     ["Enable Side Relations Marker", "If enabled will show icon on top-left corner of screen detailing which side is hostile to which."], // Pretty name shown inside the ingame settings menu. Can be stringtable entry.
     ["RAA", "Zeus"], // Pretty name of the category where the setting can be found. Can be stringtable entry.
     true, // data for this setting (Default value)
     0, // "_isGlobal" flag. Set this to 1 to always have this setting synchronized between all clients in multiplayer
     {
-		if (_this) then {		// Add or remove EH for opening Zeus interface
-			// We delay running fnc to ensure Zeus interface has time to load before we apply image to it
-			GVAR(EH_displayLoaded) = ["zen_curatorDisplayLoaded", {
-				[	{ 
-						call FUNC(onZeusInterfaceOpen);
-					},
-					[],
-					1
-				] call CBA_fnc_waitAndExecute;
-				
-			}] call CBA_fnc_addEventHandler;
+/*		if (_this) then {		// Add or remove EH for opening Zeus interface
+        // We delay running fnc to ensure Zeus interface has time to load before we apply image to it
+        GVAR(EH_displayLoaded) = ["zen_curatorDisplayLoaded", {
+          [	{ 
+              call FUNC(onZeusInterfaceOpen);
+            },
+            [],
+            1
+          ] call CBA_fnc_waitAndExecute;
+          
+        }] call CBA_fnc_addEventHandler;
 			
-		} else {
-			if !(isNil QGVAR(EH_displayLoaded)) then {
-				
-				["zen_curatorDisplayLoaded", GVAR(EH_displayLoaded)] call CBA_fnc_removeEventHandler;
-				GVAR(EH_displayLoaded) = nil;
-			};
-		};
-		
-	},
+      } else {
+        if !(isNil QGVAR(EH_displayLoaded)) then {
+          
+          ["zen_curatorDisplayLoaded", GVAR(EH_displayLoaded)] call CBA_fnc_removeEventHandler;
+          GVAR(EH_displayLoaded) = nil;
+        };
+      };
+      */
+	  },
 	false	// needRestart flag
 ] call CBA_fnc_addSetting;
 

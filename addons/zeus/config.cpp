@@ -1,6 +1,5 @@
 #include "script_component.hpp"
 
-
 class CfgPatches
 {
 	class ADDON
@@ -31,22 +30,4 @@ class CfgPatches
 
 #include "CfgEventHandlers.hpp"
 #include "cfgContext.hpp"
-//#include "curatorDisplay.hpp"
-
-/*
-//	Add CBA Settings
-class Extended_PreInit_EventHandlers {
-    class RAA_zeus_pre_init_event {
-        init = "call compile preprocessFileLineNumbers '\r\misc\addons\RAA_zeus\CBA_Settings.sqf'";
-    };
-};
-*/
-
-
-/*
-class Extended_PostInit_EventHandlers {
-    class RAA_zeus_post_init_event {
-        init = "call compile preprocessFileLineNumbers '\r\misc\addons\RAA_zeus\XEH_postInit.sqf'";
-    };
-};
-*/
+#include "curatorDisplay.hpp"

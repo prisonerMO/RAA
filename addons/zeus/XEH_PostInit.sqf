@@ -8,9 +8,6 @@
  * Scheduled
  */
 
-GVAR(testUpdate) = true;
-
-
 
 // AI Skill Presets
 // Set default settings. Default preset is grabbed from CBA settings in case mission maker has chosen to change it to suit mission
@@ -47,7 +44,6 @@ call compile preprocessFileLineNumbers QPATHTOF(scripts\createZeusModules_animSc
 
 // Init modules that are dependant Zantza's Mission Making Framework, if there is one in the mission
 [{!isNil "zafw_endinprogress"}, {
-//	[] execVM "\r\misc\addons\RAA_zeus\scripts\createZeusModules_ZAFW.sqf";
 	call compile preprocessFileLineNumbers QPATHTOF(scripts\createZeusModules_ZAFW.sqf);
 },
 [],

@@ -42,8 +42,8 @@ if (random 100 > 95) then {
 // See if we have to chop down a tree or delimb it
 if (damage _tree < 0.9) then {
 	// Cut it down!
-	[_tree, 1, true, _player] remoteExec ["setDamage", 2];		// Must be executed on server to ensure it falls in right direction
-//	_tree setDamage [1, true, _player];
+//	[_tree, 1, true, _player] remoteExec ["setDamage", 2];
+	_tree setDamage [1, true, _player];
 	if (RAA_misc_debug) then {systemChat format ["[RAA_misc] Chopped down tree %1", _tree];};
 	
 } else {
@@ -60,18 +60,6 @@ if (damage _tree < 0.9) then {
 		if (RAA_misc_debug) then {systemChat format ["[RAA_misc] Stripped tree %1 and replaced with %2", _tree, _trunk];};
 	};
 };
-
-
-
-/*
-[	{
-		(_this select 0) setDamage 1;
-	}, 
-		[_tree],
-	3
-] call CBA_fnc_waitAndExecute;
-*/
-
 
 
 

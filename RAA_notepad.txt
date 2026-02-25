@@ -2,7 +2,7 @@
 - BeltItems: Drinking half bottle deletes entire bottle
 - ACE Arsenal Overview & Item Description will not hide with rest of interface
 - BeltSlot: After client disconnects from MP server bottles their bottles are removed, even if their body remains to be controlled by AI.
-- BeltSlot: After drag-and-dropping belt items in inventory screen it get stuck in red/white colors. This is purely visual bug.
+- BeltSlot: After drag-and-dropping belt items in inventory screen it get stuck in red/white colors. Closing and re-opening inventory fixes this.
 
 
 
@@ -12,10 +12,10 @@
 	- Add option to throw backpack (over wall)
 	- Add (modern) option for putting packback on chest (with proper weight)
 
-- CBA error setting:
-	["text", true, false] call ace_common_fnc_parseList
-	https://github.com/acemod/ACE3/blob/master/addons/common/functions/fnc_parseList.sqf
 
+
+- Rewrite Zeus factions status indicator
+	IN PROGRESS: Indicator is now done via config. next step: add timeout fadeout & premature hide if Zeus interface is hidden
 
 ================ CHANGE NOTES ===================================
 v2.0

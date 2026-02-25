@@ -29,3 +29,4 @@ PREP(babel_createDialog_addLanguage);
 PREP(babel_handleDialog_configureSide);
 
 PREP(createDialog_changeInventorySize);
+PREP(getFactionRelations);
