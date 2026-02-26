@@ -28,7 +28,7 @@
     "RAA_ACEA_defibSuccessChance", 
     "SLIDER", 
     "Defibrillator Success Chance", 
-    ["RAA", "ACE Additions"], 
+    ["RAA", "Medical"], 
     [0.1, 1, 0.9, 2, true],
     false, 
     {},
@@ -39,7 +39,7 @@
     "RAA_ACEA_AEDSuccessChance", 
     "SLIDER", 
     "AED Success Chance", 
-    ["RAA", "ACE Additions"], 
+    ["RAA", "Medical"], 
     [0.1, 1, 0.9, 2, true],
     false, 
     {},
@@ -51,7 +51,7 @@
     "RAA_ACEA_addItemToMedic_defib", // Internal setting name, should always contain a tag! This will be the global variable which takes the value of the setting.
     "LIST", // setting type
     ["Add item to player medic on spawn", "Note: Will not add item if it already exists. Waits for 8 seconds for other scripts to spawn item"], // Pretty name shown inside the ingame settings menu. Can be stringtable entry.
-    ["RAA", "ACE Additions"], // Pretty name of the category where the setting can be found. Can be stringtable entry.
+    ["RAA", "Medical"], // Pretty name of the category where the setting can be found. Can be stringtable entry.
     [	// data for this setting
 		[0, 1, 2],
 		["None", "Defibrillator", "AED"],
@@ -67,7 +67,7 @@
     "RAA_ACEA_addItemToMedic_naloxone", 
     "SLIDER", 
     "Add number of Naloxone to medics", 
-    ["RAA", "ACE Additions"], 
+    ["RAA", "Medical"], 
     [0, 10, 0, 0],	// Min, max, default, digits
     false, 
     {},
@@ -78,7 +78,7 @@
     QGVAR(painkiller_useTime), 
     "SLIDER", 
     "Painkillers time to use", 
-    ["RAA", "ACE Additions"], 
+    ["RAA", "Medical"], 
     [3, 20, 5, 0],	// Min, max, default, digits
     false, 
     {},
@@ -104,7 +104,7 @@
     QGVAR(treatmentFeedback), // Internal setting name, should always contain a tag! This will be the global variable which takes the value of the setting.
     "CHECKBOX", // setting type
     ["Enable Treatment Feedback", "Allow notifications to unscoscious people whenever they're being treated, to let them know they're not forgotten."], // Pretty name shown inside the ingame settings menu. Can be stringtable entry.
-    ["RAA", "ACE Additions"], // Pretty name of the category where the setting can be found. Can be stringtable entry.
+    ["RAA", "Medical"], // Pretty name of the category where the setting can be found. Can be stringtable entry.
     true, // data for this setting (Default value)
     0, // "_isGlobal" flag. Set this to 1 to always have this setting synchronized between all clients in multiplayer
     {

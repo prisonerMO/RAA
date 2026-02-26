@@ -57,7 +57,7 @@
     "CHECKBOX", // setting type
     "Disable Shift-click Waypoint creation on map", // Pretty name shown inside the ingame settings menu. Can be stringtable entry.
     ["RAA", "General"], // Pretty name of the category where the setting can be found. Can be stringtable entry.
-    true, // data for this setting (Default value)
+    false, // data for this setting (Default value)
     0, // "_isGlobal" flag. Set this to 1 to always have this setting synchronized between all clients in multiplayer
     {
 		if (_this) then {
@@ -170,7 +170,7 @@
 [	// ================================ SPAWN AI ADDITIONAL GEAR =========================
     QGVAR(AI_spawnWater_enabled),
     "CHECKBOX",
-    ["Add water to AI units", "Automatically spawns one or two water bottles of given types to all AI units"], // Pretty name shown inside the ingame settings menu. Can be stringtable entry.
+    ["Add Comsumeables to AI units", "Automatically spawns 0-2 drinkable and edible items to each AI unit."], // Pretty name shown inside the ingame settings menu. Can be stringtable entry.
     ["RAA", "AI Additional Gear"], // Pretty name of the category where the setting can be found. Can be stringtable entry.
     true, // data for this setting (Default value)
     0, // "_isGlobal" flag. Set this to 1 to always have this setting synchronized between all clients in multiplayer

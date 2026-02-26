@@ -20,11 +20,5 @@ class RscDisplayCurator {
 		//	params ["_displayOrControl", ["_config", configNull]];
 			
 		};
-		class RscControlsGroupNoScrollbars;
-		class Main: RscControlsGroupNoScrollbars
-		{
-			onCommitted = QUOTE(systemChat str _this; params [ARR_3('_control','_animType','_animTime')]; if (_animType isEqualTo ""alpha"") then {findDisplay 312 displayCtrl 1101 ctrlShow false;});
-			
-		};
 	};
 };
